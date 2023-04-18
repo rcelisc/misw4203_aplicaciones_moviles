@@ -1,4 +1,4 @@
-package com.grupo15.vinilos.ui.dashboard
+package com.grupo15.vinilos.presentation.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
