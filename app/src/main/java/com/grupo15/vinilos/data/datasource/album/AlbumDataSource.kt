@@ -4,6 +4,6 @@ import com.grupo15.vinilos.data.model.Album
 
 interface AlbumDataSource {
 
-    fun getAlbums(): List<Album>
+    suspend fun getAlbums(): Result<List<Album>>
 
 }

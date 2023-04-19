@@ -1,8 +1,8 @@
-package com.grupo15.vinilos.data.repository.album
+package com.grupo15.vinilos.data.network
 
 import com.grupo15.vinilos.data.model.Album
 
-interface AlbumRepository {
+interface VinilosServiceAdapter {
 
     suspend fun getAlbums(): Result<List<Album>>
 
