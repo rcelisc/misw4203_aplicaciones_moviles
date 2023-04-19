@@ -2,6 +2,8 @@ package com.grupo15.vinilos.di
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSourceImpl
+import com.grupo15.vinilos.data.datasource.performer.PerformerDataSource
+import com.grupo15.vinilos.data.datasource.performer.PerformerDataSourceImpl
 import com.grupo15.vinilos.data.network.VinilosApi
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.data.network.VinilosServiceAdapterImpl
@@ -51,5 +53,10 @@ class NetworkModule {
     @Provides
     fun provideAlbumDataSource(serviceAdapter: VinilosServiceAdapter): AlbumDataSource =
         AlbumDataSourceImpl(serviceAdapter)
+
+    @Singleton
+    @Provides
+    fun providePerformerDataSource(serviceAdapter: VinilosServiceAdapter): PerformerDataSource =
+        PerformerDataSourceImpl(serviceAdapter)
 
 }

@@ -4,6 +4,6 @@ import com.grupo15.vinilos.data.model.Performer
 
 interface PerformerDataSource {
 
-    fun getPerformers(): List<Performer>
+    suspend fun getPerformers(): Result<List<Performer>>
 
 }
