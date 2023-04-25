@@ -4,6 +4,6 @@ import com.grupo15.vinilos.data.model.Collector
 
 interface CollectorRepository {
 
-    fun getCollectors(): List<Collector>
+    suspend fun getCollectors(): Result<List<Collector>>
 
 }
