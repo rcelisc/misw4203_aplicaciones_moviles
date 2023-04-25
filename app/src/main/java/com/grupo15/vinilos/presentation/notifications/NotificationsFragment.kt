@@ -1,4 +1,4 @@
-package com.grupo15.vinilos.ui.notifications
+package com.grupo15.vinilos.presentation.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater

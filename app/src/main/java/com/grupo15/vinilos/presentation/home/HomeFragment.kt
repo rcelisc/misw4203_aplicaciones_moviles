@@ -1,4 +1,4 @@
-package com.grupo15.vinilos.ui.home
+package com.grupo15.vinilos.presentation.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

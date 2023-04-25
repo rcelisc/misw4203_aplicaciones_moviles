@@ -1,4 +1,4 @@
-package com.grupo15.vinilos.ui.home
+package com.grupo15.vinilos.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
