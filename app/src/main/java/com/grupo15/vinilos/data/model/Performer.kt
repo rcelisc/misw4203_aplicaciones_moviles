@@ -15,5 +15,16 @@ data class Performer(
     @Json(name = "birthDate")
     val birthDate: Date?,
     @Json(name = "creationDate")
-    val creationDate: Date?
+    val creationDate: Date?,
+    @Json(name = "performerPrizes")
+    val performerPrizes: List<PerformerPrize>?,
+    @Json(name = "albums")
+    val albums: List<Album>?,
+)
+
+data class PerformerPrize(
+    @Json(name = "id")
+    val id: Int,
+    @Json(name = "premiationDate")
+    val prizeDate: Date
 )
