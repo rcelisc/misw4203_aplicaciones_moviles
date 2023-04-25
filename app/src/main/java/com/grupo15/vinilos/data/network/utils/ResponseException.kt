@@ -11,6 +11,7 @@ sealed class ResponseException(message: String) : Exception(message) {
     class NotContentException : ResponseException("No content")
     class UnknownErrorException : ResponseException("Unknown error")
 
+    class NoConnectionException : ResponseException("No connection")
     companion object {
         fun getException(errorCode: Int): Exception? {
             return when (errorCode) {
