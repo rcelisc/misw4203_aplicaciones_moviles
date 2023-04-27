@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.grupo15.vinilos.presentation.notifications.NotificationsFragment"
+        android:id="@+id/navigation_collector"
+        android:name="com.grupo15.vinilos.presentation.collectors.CollectorsFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_collectors" />
 </navigation>

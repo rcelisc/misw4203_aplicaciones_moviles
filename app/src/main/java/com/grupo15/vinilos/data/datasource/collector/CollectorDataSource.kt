@@ -6,4 +6,5 @@ interface CollectorDataSource {
 
     suspend fun getCollectors(): Result<List<Collector>>
 
+
 }
