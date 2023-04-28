@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.performers.PerformerFragment">
+    tools:context=".presentation.albumes.AlbumFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/performer_recycler"
+        android:id="@+id/album_recycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_performer" />
+        tools:listitem="@layout/item_album"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

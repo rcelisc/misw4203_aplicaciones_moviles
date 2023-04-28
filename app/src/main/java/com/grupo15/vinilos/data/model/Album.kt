@@ -25,3 +25,4 @@ data class Album(
     @Json(name = "comments")
     val comments: List<Comment>
 )
+
