@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Vinilos</string>
-    <string name="title_albumes">Albumes</string>
-    <string name="title_performer">Artistas</string>
-    <string name="title_notifications">Coleccionistas</string>
+    <string name="title_albums">Álbumes</string>
+    <string name="title_performers">Artistas</string>
+    <string name="title_collectors">Coleccionistas</string>
 </resources>

@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_album"
         android:name="com.grupo15.vinilos.presentation.albumes.AlbumFragment"
-        android:label="Albumes"
+        android:label="@string/title_albums"
         tools:layout="@layout/fragment_album" />
 
     <fragment
         android:id="@+id/navigation_performer"
         android:name="com.grupo15.vinilos.presentation.performers.PerformerFragment"
-        android:label="@string/title_performer"
+        android:label="@string/title_performers"
         tools:layout="@layout/fragment_performer" />
 
     <fragment
         android:id="@+id/navigation_collector"
         android:name="com.grupo15.vinilos.presentation.collectors.CollectorsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_collectors"
         tools:layout="@layout/fragment_collectors" />
 </navigation>
