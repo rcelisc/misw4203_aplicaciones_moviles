@@ -1,4 +1,4 @@
-package com.grupo15.vinilos.presentation.albumes
+package com.grupo15.vinilos.presentation.albums
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.R
 import com.grupo15.vinilos.data.model.Album
-import com.grupo15.vinilos.data.model.Collector
 
 class AlbumAdapter (private var albums: List<Album>):
 RecyclerView.Adapter<AlbumAdapter.ViewHolder>(){

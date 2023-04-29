@@ -19,7 +19,7 @@ data class Performer(
     @Json(name = "performerPrizes")
     val performerPrizes: List<PerformerPrize>?,
     @Json(name = "albums")
-    val albums: List<Album>?,
+    val albums: List<Collector>?,
 )
 
 data class PerformerPrize(

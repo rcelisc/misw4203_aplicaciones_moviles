@@ -6,14 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.grupo15.vinilos.data.model.Performer
 import com.grupo15.vinilos.data.repository.performer.PerformerRepository
+import com.grupo15.vinilos.di.DispatchersModule
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.CoroutineDispatcher
 
 @HiltViewModel
-class PerformerViewModel @Inject constructor(private val performerRepository: PerformerRepository) :
-    ViewModel() {
+class PerformerViewModel @Inject constructor(
+    private val performerRepository: PerformerRepository,
+    @DispatchersModule.IODispatcher private val dispatcherIO: CoroutineDispatcher
+) : ViewModel() {
 
     private val _performers = MutableLiveData(emptyList<Performer>())
     val performers: LiveData<List<Performer>> = _performers
@@ -22,7 +25,7 @@ class PerformerViewModel @Inject constructor(private val performerRepository: Pe
     val error: LiveData<String> = _error
 
     fun getPerformers() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatcherIO) {
             val result = performerRepository.getPerformers()
             if (result.isSuccess) {
                 val performers = result.getOrNull()
