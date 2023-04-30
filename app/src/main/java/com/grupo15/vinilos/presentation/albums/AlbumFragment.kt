@@ -1,10 +1,9 @@
-package com.grupo15.vinilos.presentation.albumes
+package com.grupo15.vinilos.presentation.albums
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -35,7 +34,7 @@ class AlbumFragment : Fragment() {
         val albumRecycler:RecyclerView=binding.albumRecycle
         albumRecycler.adapter=AlbumAdapter(emptyList())
 
-        albumsViewModel.albumes.observe(viewLifecycleOwner){album->
+        albumsViewModel.albums.observe(viewLifecycleOwner){ album->
             val adapter = albumRecycler.adapter as AlbumAdapter
             adapter.updateAlbums(album)
         }
