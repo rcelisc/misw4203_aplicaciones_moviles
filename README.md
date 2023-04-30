@@ -13,8 +13,8 @@ https://user-images.githubusercontent.com/31069035/235333082-2ca690da-53a6-40ca-
 
 1. Descargar el apk que esta localizado en apk-releases
 2. Localizar apk en el celular
-3. Instalar apk
-4. Es posible que Google no permita la instalación del apk por ser una fuente desconocida.
+3. Instalar apk  
+4. Es posible que Google no permita la instalación del apk por ser una fuente desconocida.  
 ![image](https://user-images.githubusercontent.com/31069035/235333714-30d5bc5c-9162-4ad3-a51b-ef8b98c71e35.png)  
 Para ello, de en la opción instalar de todos modos. Algunos proveedores requieren un paso adicional que es "Activar fuente desconocida" para ello puedo dirigirse a este tutorial https://www.xatakandroid.com/tutoriales/como-instalar-aplicaciones-en-apk-en-un-movil-android
 
