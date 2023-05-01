@@ -12,4 +12,8 @@ class CollectorRepositoryImpl @Inject constructor(
         return remoteDataSource.getCollectors()
     }
 
+    override suspend fun getCollector(id: String): Result<Collector> {
+        TODO("Not yet implemented")
+    }
+
 }

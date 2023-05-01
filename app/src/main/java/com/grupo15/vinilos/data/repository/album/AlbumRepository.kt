@@ -6,4 +6,6 @@ interface AlbumRepository {
 
     suspend fun getAlbums(): Result<List<Album>>
 
+    suspend fun getAlbum(id: String): Result<Album>
+
 }
