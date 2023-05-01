@@ -6,4 +6,6 @@ interface PerformerRepository {
 
     suspend fun getPerformers(): Result<List<Performer>>
 
+    suspend fun getPerformer(id: String): Result<Performer>
+
 }

@@ -6,4 +6,6 @@ interface CollectorRepository {
 
     suspend fun getCollectors(): Result<List<Collector>>
 
+    suspend fun getCollector(id: String): Result<Collector>
+
 }

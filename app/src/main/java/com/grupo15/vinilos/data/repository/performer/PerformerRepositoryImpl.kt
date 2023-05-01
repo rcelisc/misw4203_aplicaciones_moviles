@@ -12,4 +12,8 @@ class PerformerRepositoryImpl @Inject constructor(
         return remoteDataSource.getPerformers()
     }
 
+    override suspend fun getPerformer(id: String): Result<Performer> {
+        TODO("Not yet implemented")
+    }
+
 }

@@ -12,4 +12,8 @@ class AlbumRepositoryImpl @Inject constructor(
         return remoteDataSource.getAlbums()
     }
 
+    override suspend fun getAlbum(id: String): Result<Album> {
+        TODO("Not yet implemented")
+    }
+
 }
