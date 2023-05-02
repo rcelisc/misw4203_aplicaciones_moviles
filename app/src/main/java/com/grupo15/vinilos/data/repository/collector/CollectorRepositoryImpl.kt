@@ -13,7 +13,7 @@ class CollectorRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCollector(id: String): Result<Collector> {
-        return remoteDataSource.getCollectors(id)
+        return remoteDataSource.getCollector(id)
     }
 
 }
