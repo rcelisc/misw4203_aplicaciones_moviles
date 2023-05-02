@@ -38,4 +38,12 @@ class VinilosServiceAdapterImpl @Inject constructor(
         } catch (e: Exception){
             Result.failure(ResponseException.NoConnectionException())
         }
+
+    override suspend fun getPerformer(id: String): Result<Performer> =
+        try {
+            vinilosApi.getPerformer(id).toResult()
+        } catch (e: Exception) {
+            Result.failure(ResponseException.NoConnectionException())
+        }
+
 }

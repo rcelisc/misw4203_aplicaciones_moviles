@@ -14,4 +14,5 @@ interface VinilosServiceAdapter {
 
     suspend fun getCollector(id: String): Result<Collector>
 
+    suspend fun getPerformer(id: String): Result<Performer>
 }
