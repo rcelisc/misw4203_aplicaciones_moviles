@@ -12,4 +12,9 @@ class CollectorDataSourceImpl @Inject constructor(
         return vinilosServiceAdapter.getCollectors()
     }
 
+    override suspend fun getCollector(id: String): Result<Collector> {
+        return vinilosServiceAdapter.getCollector(id)
+    }
+
+
 }
