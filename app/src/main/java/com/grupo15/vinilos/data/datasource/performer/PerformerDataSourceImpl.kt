@@ -12,7 +12,7 @@ class PerformerDataSourceImpl @Inject constructor(
         return vinilosServiceAdapter.getPerformers()
     }
 
-    override suspend fun getCollectors(id: String): Result<Performer> {
+    override suspend fun getPerformer(id: String): Result<Performer> {
         return vinilosServiceAdapter.getPerformer(id)
     }
 }
