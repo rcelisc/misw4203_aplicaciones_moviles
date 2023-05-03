@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.R
 import com.grupo15.vinilos.data.model.Performer
 
-class PerformerAdapter (private var performers: List<Performer>):
+class PerformerAdapter (
+    private var performers: List<Performer>,
+    private val listener: OnPerformerClickListener
+):
     RecyclerView.Adapter<PerformerAdapter.ViewHolder>()  {
 
 
@@ -21,6 +24,9 @@ class PerformerAdapter (private var performers: List<Performer>):
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.performerTitle.text = performers[position].name
+        viewHolder.itemView.setOnClickListener {
+            listener.onPerformerClick(performers[position])
+        }
     }
 
     override fun getItemCount(): Int = performers.size
@@ -39,5 +45,10 @@ class PerformerAdapter (private var performers: List<Performer>):
         this.performers = performers
         notifyDataSetChanged()
     }
+
+}
+
+interface OnPerformerClickListener {
+    fun onPerformerClick(performer: Performer)
 
 }

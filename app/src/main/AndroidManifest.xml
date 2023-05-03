@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Vinilos"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.performers.detail.PerformerDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.collectors.detail.CollectorDetailActivity"
             android:exported="false" />
         <activity
