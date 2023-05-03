@@ -1,5 +1,6 @@
 package com.grupo15.vinilos.presentation.albums
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,16 +9,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.databinding.FragmentAlbumBinding
+import com.grupo15.vinilos.presentation.albums.detail.AlbumDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AlbumFragment : Fragment() {
+class AlbumFragment : Fragment(), OnAlbumClickListener {
 
     private var _binding: FragmentAlbumBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,7 +33,7 @@ class AlbumFragment : Fragment() {
         val root: View = binding.root
 
         val albumRecycler:RecyclerView=binding.albumRecycle
-        albumRecycler.adapter=AlbumAdapter(emptyList())
+        albumRecycler.adapter=AlbumAdapter(emptyList(), this)
 
         albumsViewModel.albums.observe(viewLifecycleOwner){ album->
             val adapter = albumRecycler.adapter as AlbumAdapter
@@ -51,4 +52,11 @@ class AlbumFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onAlbumClick(album: Album) {
+        val intent = Intent(requireContext(), AlbumDetailActivity::class.java)
+        intent.putExtra(AlbumDetailActivity.ALBUM_ID_KEY, album.id.toString())
+        startActivity(intent)
+    }
+
 }

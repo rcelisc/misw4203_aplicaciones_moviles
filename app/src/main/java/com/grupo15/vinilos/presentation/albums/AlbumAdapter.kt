@@ -9,21 +9,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.R
 import com.grupo15.vinilos.data.model.Album
 
-class AlbumAdapter (private var albums: List<Album>):
-RecyclerView.Adapter<AlbumAdapter.ViewHolder>(){
+class AlbumAdapter(
+    private var albums: List<Album>,
+    private val listener: OnAlbumClickListener
+) :
+    RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_album, viewGroup,  false)
+            .inflate(R.layout.item_album, viewGroup, false)
         return ViewHolder(view)
     }
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int){
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.albumTitle.text = albums[position].name
+        viewHolder.itemView.setOnClickListener {
+            listener.onAlbumClick(albums[position])
+        }
     }
 
     override fun getItemCount(): Int = albums.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val albumTitle: TextView
 
         init {
@@ -32,8 +39,13 @@ RecyclerView.Adapter<AlbumAdapter.ViewHolder>(){
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAlbums(albumes: List<Album>){
+    fun updateAlbums(albumes: List<Album>) {
         this.albums = albumes
         notifyDataSetChanged()
     }
+}
+
+interface OnAlbumClickListener {
+    fun onAlbumClick(album: Album)
+
 }

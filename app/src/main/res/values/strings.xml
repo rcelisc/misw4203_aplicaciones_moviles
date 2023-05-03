@@ -13,5 +13,12 @@
     <string name="description_performer_detail">Descripción</string>
     <string name="birthday_performer_detail">Fecha de cumpleaños</string>
     <string name="image_performer_detail">Imagen</string>
-
+    <string name="title_album_detail">Detalle álbum</string>
+    <string name="name_album_detail">Nombre</string>
+    <string name="cover_album_detail">Portada</string>
+    <string name="release_date_album_detail">Fecha de lanzamiento</string>
+    <string name="genre_album_detail">Género</string>
+    <string name="record_label_album_detail">Sello discográfico</string>
+    <string name="description_album_detail">Descripción</string>
+    <string name="tracks_album_detail">Tracks</string>
 </resources>
