@@ -9,21 +9,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.R
 import com.grupo15.vinilos.data.model.Collector
 
-class CollectorAdapter (private var collectorss: List<Collector>):
-        RecyclerView.Adapter<CollectorAdapter.ViewHolder>() {
+class CollectorAdapter(
+    private var collectors: List<Collector>,
+    private val listener: OnCollectorClickListener
+) :
+    RecyclerView.Adapter<CollectorAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-                .inflate(R.layout.item_collector, viewGroup,  false)
+            .inflate(R.layout.item_collector, viewGroup, false)
+
         return ViewHolder(view)
     }
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int){
-        viewHolder.collectorTitle.text = collectorss[position].name
+
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.collectorTitle.text = collectors[position].name
+        viewHolder.itemView.setOnClickListener {
+            listener.onCollectorClick(collectors[position])
+        }
     }
 
-    override fun getItemCount(): Int = collectorss.size
+    override fun getItemCount(): Int = collectors.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val collectorTitle: TextView
 
         init {
@@ -32,10 +40,14 @@ class CollectorAdapter (private var collectorss: List<Collector>):
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateCollectors(collectors: List<Collector>){
-        this.collectorss = collectors
+    fun updateCollectors(collectors: List<Collector>) {
+        this.collectors = collectors
         notifyDataSetChanged()
     }
 
+}
+
+interface OnCollectorClickListener {
+    fun onCollectorClick(collector: Collector)
 
 }

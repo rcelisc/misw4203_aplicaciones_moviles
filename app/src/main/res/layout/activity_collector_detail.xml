@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".presentation.collectors.detail.CollectorDetailActivity">
+
+    <TextView
+        android:id="@+id/collector_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/name_collector_detail" />
+
+    <TextView
+        android:id="@+id/collector_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/collector_phone_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/phone_collector_detail" />
+
+    <TextView
+        android:id="@+id/collector_phone_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/collector_email_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/email_collector_detail" />
+
+    <TextView
+        android:id="@+id/collector_email_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/collector_favorites_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/favorites_collector_detail" />
+
+    <TextView
+        android:id="@+id/collector_favorites_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_textview_shape" />
+
+</LinearLayout>
