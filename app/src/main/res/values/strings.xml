@@ -3,4 +3,10 @@
     <string name="title_albums">Álbumes</string>
     <string name="title_performers">Artistas</string>
     <string name="title_collectors">Coleccionistas</string>
+    <string name="title_collector_detail">Detalle coleccionista</string>
+    <string name="name_collector_detail">Nombre</string>
+    <string name="phone_collector_detail">Télefono</string>
+    <string name="email_collector_detail">E-mai</string>
+    <string name="favorites_collector_detail">Gustos Musicales</string>
+
 </resources>
