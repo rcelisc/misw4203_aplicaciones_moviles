@@ -1,9 +1,9 @@
-package com.grupo15.vinilos.presentation.performers
+package com.grupo15.vinilos.presentation.performers.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.grupo15.vinilos.MainCoroutineRule
 import com.grupo15.vinilos.data.repository.performer.PerformerRepository
-import com.grupo15.vinilos.presentation.performers.detail.PerformerDetailViewModel
+import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
