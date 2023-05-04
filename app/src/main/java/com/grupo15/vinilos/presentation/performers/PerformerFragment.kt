@@ -19,8 +19,6 @@ class PerformerFragment : Fragment(), OnPerformerClickListener {
 
     private var _binding: FragmentPerformerBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

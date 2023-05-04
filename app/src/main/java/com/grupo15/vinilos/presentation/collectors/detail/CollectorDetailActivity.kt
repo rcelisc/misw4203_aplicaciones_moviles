@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.grupo15.vinilos.R
+import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.databinding.ActivityCollectorDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,17 +27,21 @@ class CollectorDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         collectorDetailViewModel.collector.observe(this) { collector ->
-            binding.collectorNameText.text = collector?.name
-            binding.collectorPhoneText.text = collector?.telephone
-            binding.collectorEmailText.text = collector?.email
-            binding.collectorFavoritesText.text =
-                collector?.favoritePerformers?.joinToString(FAVORITES_SEPARATOR) { it.name }
+            collector?.let { loadInfo(it) }
         }
 
         intent.getStringExtra(COLLECTOR_ID_KEY)?.let { id ->
             collectorDetailViewModel.getCollector(id)
         }
 
+    }
+
+    private fun loadInfo(collector: Collector) {
+        binding.collectorNameText.text = collector.name
+        binding.collectorPhoneText.text = collector.telephone
+        binding.collectorEmailText.text = collector.email
+        binding.collectorFavoritesText.text =
+            collector.favoritePerformers?.joinToString(FAVORITES_SEPARATOR) { it.name }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
