@@ -24,7 +24,7 @@ class AlbumDetailViewModel @Inject constructor(
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    fun getAlbum(idAlbum: String) {
+    fun getAlbum(idAlbum: Int) {
         viewModelScope.launch(dispatcherIO) {
             val result = albumRepository.getAlbum(idAlbum)
             if (result.isSuccess) {

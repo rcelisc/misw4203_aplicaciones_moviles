@@ -57,7 +57,7 @@ class CollectorsFragment : Fragment(), OnCollectorClickListener {
 
     override fun onCollectorClick(collector: Collector) {
         val intent = Intent(requireContext(), CollectorDetailActivity::class.java)
-        intent.putExtra(COLLECTOR_ID_KEY, collector.id.toString())
+        intent.putExtra(COLLECTOR_ID_KEY, collector.id)
         startActivity(intent)
     }
 

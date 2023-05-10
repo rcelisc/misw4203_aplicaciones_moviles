@@ -55,7 +55,7 @@ class AlbumFragment : Fragment(), OnAlbumClickListener {
 
     override fun onAlbumClick(album: Album) {
         val intent = Intent(requireContext(), AlbumDetailActivity::class.java)
-        intent.putExtra(AlbumDetailActivity.ALBUM_ID_KEY, album.id.toString())
+        intent.putExtra(AlbumDetailActivity.ALBUM_ID_KEY, album.id)
         startActivity(intent)
     }
 

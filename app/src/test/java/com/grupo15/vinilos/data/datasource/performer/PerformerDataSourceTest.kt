@@ -21,7 +21,7 @@ class PerformerDataSourceTest {
 
     @Before
     fun setup() {
-        performerDataSource = PerformerDataSourceImpl(vinilosServiceAdapter)
+        performerDataSource = RemotePerformerDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test
@@ -59,7 +59,7 @@ class PerformerDataSourceTest {
         coEvery { vinilosServiceAdapter.getPerformer(any()) } returns Result.success(performer)
 
         // when
-        val result = performerDataSource.getPerformer("1")
+        val result = performerDataSource.getPerformer(1)
 
         // then
         coVerify { vinilosServiceAdapter.getPerformer(any()) }
@@ -73,7 +73,7 @@ class PerformerDataSourceTest {
         coEvery { vinilosServiceAdapter.getPerformer(any()) } returns Result.failure(Exception(message))
 
         // when
-        val result = performerDataSource.getPerformer("1")
+        val result = performerDataSource.getPerformer(1)
 
         // then
         coVerify { vinilosServiceAdapter.getPerformer(any()) }

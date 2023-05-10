@@ -5,14 +5,15 @@ import com.grupo15.vinilos.data.model.Collector
 import javax.inject.Inject
 
 class CollectorRepositoryImpl @Inject constructor(
-    private val remoteDataSource: CollectorDataSource
+    private val remoteDataSource: CollectorDataSource,
+    private val localCacheDataSourceImpl: CollectorDataSource
 ) : CollectorRepository {
 
     override suspend fun getCollectors(): Result<List<Collector>> {
         return remoteDataSource.getCollectors()
     }
 
-    override suspend fun getCollector(id: String): Result<Collector> {
+    override suspend fun getCollector(id: Int): Result<Collector?> {
         return remoteDataSource.getCollector(id)
     }
 

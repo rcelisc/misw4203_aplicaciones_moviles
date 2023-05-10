@@ -13,6 +13,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -21,17 +22,26 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideAlbumRepository(albumDataSource: AlbumDataSource): AlbumRepository =
-        AlbumRepositoryImpl(albumDataSource)
+    fun provideAlbumRepository(
+        @Named("remote") remoteDataSource: AlbumDataSource,
+        @Named("cache")  localCacheDataSource: AlbumDataSource
+    ): AlbumRepository =
+        AlbumRepositoryImpl(remoteDataSource, localCacheDataSource)
 
     @Singleton
     @Provides
-    fun providePerformerRepository(performerDataSource: PerformerDataSource): PerformerRepository =
-        PerformerRepositoryImpl(performerDataSource)
+    fun providePerformerRepository(
+        @Named("remote")  remoteDataSource: PerformerDataSource,
+        @Named("cache")  localCacheDataSource: PerformerDataSource
+    ): PerformerRepository =
+        PerformerRepositoryImpl(remoteDataSource, localCacheDataSource)
 
     @Singleton
     @Provides
-    fun provideCollectorRepository(collectorDataSource: CollectorDataSource): CollectorRepository =
-        CollectorRepositoryImpl(collectorDataSource)
+    fun provideCollectorRepository(
+        @Named("remote")  remoteDataSource: CollectorDataSource,
+        @Named("cache")  localCacheDataSource: CollectorDataSource
+    ): CollectorRepository =
+        CollectorRepositoryImpl(remoteDataSource, localCacheDataSource)
 
 }

@@ -38,7 +38,7 @@ class CollectorDetailViewModelTest {
         val idCollector = 1
         val fakeCollector = getFakeCollector(idCollector)
         coEvery { collectorRepository.getCollector(any()) } returns Result.success(fakeCollector)
-        viewModel.getCollector("$idCollector")
+        viewModel.getCollector(idCollector)
         coVerify { collectorRepository.getCollector(any()) }
         Assert.assertEquals(fakeCollector.id, viewModel.collector.value?.id)
         Assert.assertEquals(fakeCollector.name, viewModel.collector.value?.name)
@@ -60,7 +60,7 @@ class CollectorDetailViewModelTest {
         val idCollector = 1
         val message = "Error from api"
         coEvery { collectorRepository.getCollector(any()) } returns Result.failure(Exception(message))
-        viewModel.getCollector("$idCollector")
+        viewModel.getCollector(idCollector)
         coVerify { collectorRepository.getCollector(any()) }
         Assert.assertEquals(message, viewModel.error.value)
     }

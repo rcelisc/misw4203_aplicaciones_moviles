@@ -23,11 +23,11 @@ class FakeVinilosApi : VinilosApi {
         return Response.success(getFakeCollectors())
     }
 
-    override suspend fun getCollector(id: String): Response<Collector> {
+    override suspend fun getCollector(id: Int): Response<Collector> {
         return Response.success(getFakeCollector(1))
     }
 
-    override suspend fun getPerformer(id: String): Response<Performer> {
+    override suspend fun getPerformer(id: Int): Response<Performer> {
         return Response.success(getFakePerformer(1))
     }
 }

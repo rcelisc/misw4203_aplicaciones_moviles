@@ -30,7 +30,7 @@ class CollectorDetailActivity : AppCompatActivity() {
             collector?.let { loadInfo(it) }
         }
 
-        intent.getStringExtra(COLLECTOR_ID_KEY)?.let { id ->
+        intent.getIntExtra(COLLECTOR_ID_KEY, 0).let { id ->
             collectorDetailViewModel.getCollector(id)
         }
 

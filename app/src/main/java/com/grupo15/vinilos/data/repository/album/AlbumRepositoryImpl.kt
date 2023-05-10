@@ -5,14 +5,15 @@ import com.grupo15.vinilos.data.model.Album
 import javax.inject.Inject
 
 class AlbumRepositoryImpl @Inject constructor(
-    private val remoteDataSource: AlbumDataSource
+    private val remoteDataSource: AlbumDataSource,
+    private val localCacheDataSource: AlbumDataSource
 ) : AlbumRepository {
 
     override suspend fun getAlbums(): Result<List<Album>> {
         return remoteDataSource.getAlbums()
     }
 
-    override suspend fun getAlbum(id: String): Result<Album> {
+    override suspend fun getAlbum(id: Int): Result<Album?> {
         TODO("Not yet implemented")
     }
 

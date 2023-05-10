@@ -15,25 +15,26 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class AlbumRepositoryTest {
 
-    private val albumDataSource = mockk<AlbumDataSource>()
+    private val albumRemoteDataSource = mockk<AlbumDataSource>()
+    private val albumLocalCacheDataSource = mockk<AlbumDataSource>()
     private lateinit var albumRepository: AlbumRepository
 
     @Before
     fun setup() {
-        albumRepository = AlbumRepositoryImpl(albumDataSource)
+        albumRepository = AlbumRepositoryImpl(albumRemoteDataSource, albumLocalCacheDataSource)
     }
 
     @Test
     fun `success when getAlbums`() = runTest {
         // given
         val albums = getFakeAlbums()
-        coEvery { albumDataSource.getAlbums() } returns Result.success(albums)
+        coEvery { albumRemoteDataSource.getAlbums() } returns Result.success(albums)
 
         // when
         val result = albumRepository.getAlbums()
 
         // then
-        coVerify { albumDataSource.getAlbums() }
+        coVerify { albumRemoteDataSource.getAlbums() }
         assertEquals(Result.success(albums), result)
     }
 
@@ -41,13 +42,13 @@ class AlbumRepositoryTest {
     fun `failure when getAlbums`() = runTest {
         // given
         val message = "Error from api"
-        coEvery { albumDataSource.getAlbums() } returns Result.failure(Exception(message))
+        coEvery { albumRemoteDataSource.getAlbums() } returns Result.failure(Exception(message))
 
         // when
         val result = albumRepository.getAlbums()
 
         // then
-        coVerify { albumDataSource.getAlbums() }
+        coVerify { albumRemoteDataSource.getAlbums() }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 

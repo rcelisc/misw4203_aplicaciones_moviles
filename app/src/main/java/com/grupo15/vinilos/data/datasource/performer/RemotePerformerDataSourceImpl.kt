@@ -4,7 +4,7 @@ import com.grupo15.vinilos.data.model.Performer
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import javax.inject.Inject
 
-class PerformerDataSourceImpl @Inject constructor(
+class RemotePerformerDataSourceImpl @Inject constructor(
     private val vinilosServiceAdapter: VinilosServiceAdapter
 ) : PerformerDataSource {
 
@@ -12,7 +12,11 @@ class PerformerDataSourceImpl @Inject constructor(
         return vinilosServiceAdapter.getPerformers()
     }
 
-    override suspend fun getPerformer(id: String): Result<Performer> {
+    override suspend fun getPerformer(id: Int): Result<Performer?> {
         return vinilosServiceAdapter.getPerformer(id)
+    }
+
+    override suspend fun savePerformer(performer: Performer) {
+        TODO("Not yet implemented")
     }
 }

@@ -15,25 +15,26 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class CollectorRepositoryTest {
 
-    private val collectorDataSource = mockk<CollectorDataSource>()
+    private val collectorRemoteDataSource = mockk<CollectorDataSource>()
+    private val collectorLocalCacheDataSource = mockk<CollectorDataSource>()
     private lateinit var collectorRepository: CollectorRepository
 
     @Before
     fun setup() {
-        collectorRepository = CollectorRepositoryImpl(collectorDataSource)
+        collectorRepository = CollectorRepositoryImpl(collectorRemoteDataSource, collectorLocalCacheDataSource)
     }
 
     @Test
     fun `success when getCollectors`() = runTest {
         // given
         val collectors = getFakeCollectors()
-        coEvery { collectorDataSource.getCollectors() } returns Result.success(collectors)
+        coEvery { collectorRemoteDataSource.getCollectors() } returns Result.success(collectors)
 
         // when
         val result = collectorRepository.getCollectors()
 
         // then
-        coVerify { collectorDataSource.getCollectors() }
+        coVerify { collectorRemoteDataSource.getCollectors() }
         assertEquals(Result.success(collectors), result)
     }
 
@@ -41,13 +42,13 @@ class CollectorRepositoryTest {
     fun `failure when getCollectors`() = runTest {
         // given
         val message = "Error from api"
-        coEvery { collectorDataSource.getCollectors() } returns Result.failure(Exception(message))
+        coEvery { collectorRemoteDataSource.getCollectors() } returns Result.failure(Exception(message))
 
         // when
         val result = collectorRepository.getCollectors()
 
         // then
-        coVerify { collectorDataSource.getCollectors() }
+        coVerify { collectorRemoteDataSource.getCollectors() }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 
