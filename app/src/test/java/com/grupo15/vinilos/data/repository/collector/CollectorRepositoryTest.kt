@@ -2,6 +2,7 @@ package com.grupo15.vinilos.data.repository.collector
 
 import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
+import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -48,6 +49,34 @@ class CollectorRepositoryTest {
 
         // then
         coVerify { collectorDataSource.getCollectors() }
+        assertEquals(message, result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `success when getCollector`() = runTest {
+        // given
+        val performer = getFakeCollector(1)
+        coEvery {  collectorDataSource.getCollector (any()) } returns Result.success(performer)
+
+        // when
+        val result = collectorRepository.getCollector("100")
+
+        // then
+        coVerify { collectorDataSource.getCollector(any()) }
+        assertEquals(Result.success(performer), result)
+    }
+
+    @Test
+    fun `failure when getCollector`() = runTest {
+        // given
+        val message = "Error from api"
+        coEvery { collectorDataSource.getCollector(any()) } returns Result.failure(Exception(message))
+
+        // when
+        val result = collectorRepository.getCollector("100")
+
+        // then
+        coVerify { collectorDataSource.getCollector(any()) }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 

@@ -1,5 +1,6 @@
 package com.grupo15.vinilos.data.datasource.performer
 
+import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import com.grupo15.vinilos.presentation.performers.getFakePerformers
@@ -18,6 +19,7 @@ class PerformerDataSourceTest {
 
     private val vinilosServiceAdapter = mockk<VinilosServiceAdapter>()
     private lateinit var performerDataSource: PerformerDataSource
+    private lateinit var collectorDataSource: CollectorDataSource
 
     @Before
     fun setup() {
