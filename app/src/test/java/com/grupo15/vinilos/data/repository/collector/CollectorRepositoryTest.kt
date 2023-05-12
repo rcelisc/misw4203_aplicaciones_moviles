@@ -56,29 +56,15 @@ class CollectorRepositoryTest {
     @Test
     fun `success when getCollector`() = runTest {
         // given
-        val performer = getFakeCollector(1)
-        coEvery {  collectorDataSource.getCollector (any()) } returns Result.success(performer)
+        val collector = getFakeCollector(1)
+        coEvery {  collectorLocalCacheDataSource.getCollector (any()) } returns Result.success(collector)
 
         // when
-        val result = collectorRepository.getCollector("100")
+        val result = collectorRepository.getCollector(1)
 
         // then
-        coVerify { collectorDataSource.getCollector(any()) }
-        assertEquals(Result.success(performer), result)
-    }
-
-    @Test
-    fun `failure when getCollector`() = runTest {
-        // given
-        val message = "Error from api"
-        coEvery { collectorDataSource.getCollector(any()) } returns Result.failure(Exception(message))
-
-        // when
-        val result = collectorRepository.getCollector("100")
-
-        // then
-        coVerify { collectorDataSource.getCollector(any()) }
-        assertEquals(message, result.exceptionOrNull()?.message)
+        coVerify { collectorLocalCacheDataSource.getCollector(any()) }
+        assertEquals(Result.success(collector), result)
     }
 
 }

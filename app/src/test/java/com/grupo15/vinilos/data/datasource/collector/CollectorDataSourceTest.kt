@@ -60,7 +60,7 @@ class CollectorDataSourceTest {
         coEvery { vinilosServiceAdapter.getCollector(any()) } returns Result.success(performer)
 
         // when
-        val result = collectorDataSource.getCollector("100")
+        val result = collectorDataSource.getCollector(100)
 
         // then
         coVerify { vinilosServiceAdapter.getCollector(any()) }
@@ -75,7 +75,7 @@ class CollectorDataSourceTest {
         coEvery { vinilosServiceAdapter.getCollector(any()) } returns Result.failure(Exception(message))
 
         // when
-        val result = collectorDataSource.getCollector("100")
+        val result = collectorDataSource.getCollector(100)
 
         // then
         coVerify { vinilosServiceAdapter.getCollector(any()) }

@@ -60,10 +60,10 @@ class AlbumDetailViewModelTest {
 
     @Test
     fun `failure when getAlbum`() = runTest {
-        val idCollector = 1
+        val idAlbum = 1
         val message = "Error from api"
         coEvery { albumRepository.getAlbum(any()) } returns Result.failure(Exception(message))
-        viewModel.getAlbum(idCollector)
+        viewModel.getAlbum(idAlbum)
         coVerify { albumRepository.getAlbum(any()) }
         Assert.assertEquals(message, viewModel.error.value)
     }

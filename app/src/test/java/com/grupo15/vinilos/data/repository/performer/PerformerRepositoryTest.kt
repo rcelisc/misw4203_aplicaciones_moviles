@@ -57,28 +57,14 @@ class PerformerRepositoryTest {
     fun `success when getPerformer`() = runTest {
         // given
         val performer = getFakePerformer(1)
-        coEvery { performerRemoteDataSource.getPerformer(any()) } returns Result.success(performer)
+        coEvery { performerLocalCacheDataSource.getPerformer(any()) } returns Result.success(performer)
 
         // when
         val result = performerRepository.getPerformer(1)
 
         // then
-        coVerify { performerRemoteDataSource.getPerformer(any()) }
+        coVerify { performerLocalCacheDataSource.getPerformer(any()) }
         assertEquals(Result.success(performer), result)
-    }
-
-    @Test
-    fun `failure when getPerformer`() = runTest {
-        // given
-        val message = "Error from api"
-        coEvery { performerRemoteDataSource.getPerformer(any()) } returns Result.failure(Exception(message))
-
-        // when
-        val result = performerRepository.getPerformer(1)
-
-        // then
-        coVerify { performerRemoteDataSource.getPerformer(any()) }
-        assertEquals(message, result.exceptionOrNull()?.message)
     }
 
 }

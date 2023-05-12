@@ -1,6 +1,7 @@
 package com.grupo15.vinilos.data.network
 
 import com.grupo15.vinilos.data.network.utils.ResponseException
+import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
 import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
@@ -139,6 +140,34 @@ class VinilosServiceAdapterTest {
         Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
     }
 
+    @Test
+    fun `success when getAlbum`() = runTest {
+        // given
+        val album = getFakeAlbum(1)
+        coEvery { vinilosApi.getAlbum(any()) } returns Response.success(album)
+
+        // when
+        val result = vinilosServiceAdapter.getAlbum(1)
+
+        // then
+        coVerify { vinilosApi.getAlbum(any()) }
+        Assert.assertEquals(Result.success(album), result)
+    }
+
+    @Test
+    fun `failure when getAlbum`() = runTest {
+        // given
+        val message = ResponseException.NoConnectionException()
+        coEvery { vinilosApi.getAlbum(any()) } throws message
+
+        // when
+        val result = vinilosServiceAdapter.getAlbum(1)
+
+        // then
+        coVerify { vinilosApi.getAlbum(any()) }
+        Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
+    }
+
 
     @Test
     fun `success when getCollector`() = runTest {
@@ -147,7 +176,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getCollector(any()) } returns Response.success(performer)
 
         // when
-        val result = vinilosServiceAdapter.getCollector("100")
+        val result = vinilosServiceAdapter.getCollector(100)
 
         // then
         coVerify { vinilosApi.getCollector(any()) }
@@ -160,7 +189,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getCollector (any()) } throws message
 
         // when
-        val result = vinilosServiceAdapter.getCollector("100")
+        val result = vinilosServiceAdapter.getCollector(100)
 
         // then
         coVerify { vinilosApi.getCollector(any()) }

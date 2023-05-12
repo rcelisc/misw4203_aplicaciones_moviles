@@ -18,6 +18,9 @@ interface VinilosApi {
     @GET("/collectors")
     suspend fun getCollectors(): Response<List<Collector>>
 
+    @GET("/albums/{id}")
+    suspend fun getAlbum(@Path("id")id: Int): Response<Album>
+
     @GET("/collectors/{id}")
     suspend fun getCollector(@Path("id") id: Int): Response<Collector>
 

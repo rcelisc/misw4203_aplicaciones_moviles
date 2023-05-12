@@ -1,7 +1,10 @@
 package com.grupo15.vinilos.data.repository.album
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
+import com.grupo15.vinilos.data.repository.performer.PerformerRepository
+import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
+import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -50,6 +53,20 @@ class AlbumRepositoryTest {
         // then
         coVerify { albumRemoteDataSource.getAlbums() }
         assertEquals(message, result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `success when album detail`() = runTest {
+        // given
+        val album = getFakeAlbum(1)
+        coEvery { albumLocalCacheDataSource.getAlbum(any()) } returns Result.success(album)
+
+        // when
+        val result = albumRepository.getAlbum(1)
+
+        // then
+        coVerify { albumLocalCacheDataSource.getAlbum(any()) }
+        assertEquals(Result.success(album), result)
     }
 
 }

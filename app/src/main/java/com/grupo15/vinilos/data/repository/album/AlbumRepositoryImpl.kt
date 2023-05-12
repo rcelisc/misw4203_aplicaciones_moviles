@@ -14,7 +14,14 @@ class AlbumRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAlbum(id: Int): Result<Album?> {
-        TODO("Not yet implemented")
+        val localCollector = localCacheDataSource.getAlbum(id)
+        return if (localCollector.getOrNull() != null) {
+            localCollector
+        } else {
+            val remoteCollector = remoteDataSource.getAlbum(id)
+            remoteCollector.getOrNull()?.let { localCacheDataSource.saveAlbum(it) }
+            return remoteCollector
+        }
     }
 
 }
