@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class CollectorRepositoryImpl @Inject constructor(
     private val remoteDataSource: CollectorDataSource,
-    private val localCacheDataSourceImpl: CollectorDataSource
+    private val localCacheDataSource: CollectorDataSource
 ) : CollectorRepository {
 
     override suspend fun getCollectors(): Result<List<Collector>> {
@@ -14,7 +14,14 @@ class CollectorRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCollector(id: Int): Result<Collector?> {
-        return remoteDataSource.getCollector(id)
+        val localCollector = localCacheDataSource.getCollector(id)
+        return if (localCollector.getOrNull() != null) {
+            localCollector
+        } else {
+            val remoteCollector = remoteDataSource.getCollector(id)
+            remoteCollector.getOrNull()?.let { localCacheDataSource.saveCollector(it) }
+            return remoteCollector
+        }
     }
 
 }
