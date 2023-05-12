@@ -40,7 +40,7 @@ class VinilosApiTest {
 
     @Test
     fun `success when getPerformer`() = runTest {
-        val response = vinilosApi.getPerformer("1")
+        val response = vinilosApi.getPerformer(1)
         assertNotNull(response.body())
         assertEquals(1, response.body()?.id)
     }

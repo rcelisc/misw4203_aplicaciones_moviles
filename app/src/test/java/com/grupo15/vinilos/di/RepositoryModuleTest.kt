@@ -11,25 +11,39 @@ import org.mockito.Mockito.mock
 
 class RepositoryModuleTest {
 
-    private val albumDataSource = mock(AlbumDataSource::class.java)
-    private val performerDataSource = mock(PerformerDataSource::class.java)
-    private val collectorDataSource = mock(CollectorDataSource::class.java)
+    private val albumRemoteDataSource = mock(AlbumDataSource::class.java)
+    private val albumLocalCacheDataSource = mock(AlbumDataSource::class.java)
+
+    private val performerRemoteDataSource = mock(PerformerDataSource::class.java)
+    private val performerLocalCacheDataSource = mock(PerformerDataSource::class.java)
+
+    private val collectorRemoteDataSource = mock(CollectorDataSource::class.java)
+    private val collectorLocalCacheDataSource = mock(CollectorDataSource::class.java)
 
     @Test
     fun `provideAlbumRepository should return AlbumRepositoryImpl`() {
-        val albumRepository = RepositoryModule().provideAlbumRepository(albumDataSource)
+        val albumRepository = RepositoryModule().provideAlbumRepository(
+            albumRemoteDataSource,
+            albumLocalCacheDataSource
+        )
         assert(albumRepository is AlbumRepositoryImpl)
     }
 
     @Test
     fun `providePerformerRepository should return PerformerRepositoryImpl`() {
-        val performerRepository = RepositoryModule().providePerformerRepository(performerDataSource)
+        val performerRepository = RepositoryModule().providePerformerRepository(
+            performerRemoteDataSource,
+            performerLocalCacheDataSource
+        )
         assert(performerRepository is PerformerRepositoryImpl)
     }
 
     @Test
     fun `provideCollectorRepository should return CollectorRepositoryImpl`() {
-        val collectorRepository = RepositoryModule().provideCollectorRepository(collectorDataSource)
+        val collectorRepository = RepositoryModule().provideCollectorRepository(
+            collectorRemoteDataSource,
+            collectorLocalCacheDataSource
+        )
         assert(collectorRepository is CollectorRepositoryImpl)
     }
 

@@ -24,7 +24,7 @@ class PerformerDetailViewModel @Inject constructor(
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    fun getPerformer(idPerformer: String) {
+    fun getPerformer(idPerformer: Int) {
         viewModelScope.launch(dispatcherIO) {
             val result = performerRepository.getPerformer(idPerformer)
             if (result.isSuccess) {

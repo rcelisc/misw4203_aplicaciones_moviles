@@ -20,7 +20,7 @@ class CollectorDataSourceTest {
 
     @Before
     fun setup() {
-        collectorDataSource = CollectorDataSourceImpl(vinilosServiceAdapter)
+        collectorDataSource = RemoteCollectorDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test

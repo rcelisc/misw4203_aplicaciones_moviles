@@ -24,7 +24,7 @@ class CollectorDetailViewModel @Inject constructor(
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
-    fun getCollector(idCollector: String) {
+    fun getCollector(idCollector: Int) {
         viewModelScope.launch(dispatcherIO) {
             val result = collectorRepository.getCollector(idCollector)
             if (result.isSuccess) {

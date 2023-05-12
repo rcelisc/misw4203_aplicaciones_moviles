@@ -117,7 +117,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getPerformer(any()) } returns Response.success(performer)
 
         // when
-        val result = vinilosServiceAdapter.getPerformer("1")
+        val result = vinilosServiceAdapter.getPerformer(1)
 
         // then
         coVerify { vinilosApi.getPerformer(any()) }
@@ -131,7 +131,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getPerformer(any()) } throws message
 
         // when
-        val result = vinilosServiceAdapter.getPerformer("1")
+        val result = vinilosServiceAdapter.getPerformer(1)
 
         // then
         coVerify { vinilosApi.getPerformer(any()) }
