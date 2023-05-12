@@ -64,6 +64,7 @@
         android:id="@+id/performer_image_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image_performer_detail_description"
         android:background="@drawable/input_textview_shape" />
 
 </LinearLayout>

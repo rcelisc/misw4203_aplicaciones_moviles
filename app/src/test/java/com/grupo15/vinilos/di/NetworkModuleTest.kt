@@ -11,13 +11,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class NetworkModuleTest {
 
     @Test
-    fun testProvideBaseURL() {
-        val networkModule = NetworkModule()
-        val baseUrl = networkModule.provideBaseURL()
-        assertEquals("https://vinilos-backend-mobile.herokuapp.com", baseUrl)
-    }
-
-    @Test
     fun testProvideJsonConverter() {
         val networkModule = NetworkModule()
         val jsonConverter = networkModule.provideJsonConverter()
@@ -28,7 +21,7 @@ class NetworkModuleTest {
     fun testProvideVinilosApi() {
         val networkModule = NetworkModule()
         val vinilosApi =
-            networkModule.provideVinilosApi("https://example.com", MoshiConverterFactory.create())
+            networkModule.provideVinilosApi(MoshiConverterFactory.create())
         assertNotNull(vinilosApi)
     }
 

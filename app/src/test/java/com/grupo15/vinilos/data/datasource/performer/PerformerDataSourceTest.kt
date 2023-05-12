@@ -19,7 +19,6 @@ class PerformerDataSourceTest {
 
     private val vinilosServiceAdapter = mockk<VinilosServiceAdapter>()
     private lateinit var performerDataSource: PerformerDataSource
-    private lateinit var collectorDataSource: CollectorDataSource
 
     @Before
     fun setup() {
