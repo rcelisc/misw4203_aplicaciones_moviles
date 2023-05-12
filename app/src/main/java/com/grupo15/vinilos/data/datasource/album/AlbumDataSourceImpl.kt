@@ -12,4 +12,8 @@ class AlbumDataSourceImpl @Inject constructor(
         return vinilosServiceAdapter.getAlbums()
     }
 
+    override suspend fun getAlbum(id: Int):Result<Album>{
+        return vinilosServiceAdapter.getAlbum(id)
+    }
+
 }

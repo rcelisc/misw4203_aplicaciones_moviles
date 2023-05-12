@@ -3,6 +3,7 @@ package com.grupo15.vinilos.data.network
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.data.model.Performer
+import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
 import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
@@ -23,6 +24,9 @@ class FakeVinilosApi : VinilosApi {
         return Response.success(getFakeCollectors())
     }
 
+    override suspend fun getAlbum(id: Int): Response<Album> {
+        return Response.success(getFakeAlbum(1))
+    }
     override suspend fun getCollector(id: String): Response<Collector> {
         return Response.success(getFakeCollector(1))
     }

@@ -1,6 +1,7 @@
 package com.grupo15.vinilos.data.network
 
 import com.grupo15.vinilos.data.network.utils.ResponseException
+import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
 import com.grupo15.vinilos.presentation.performers.getFakePerformer
@@ -135,6 +136,34 @@ class VinilosServiceAdapterTest {
 
         // then
         coVerify { vinilosApi.getPerformer(any()) }
+        Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `success when getAlbum`() = runTest {
+        // given
+        val album = getFakeAlbum(1)
+        coEvery { vinilosApi.getAlbum(any()) } returns Response.success(album)
+
+        // when
+        val result = vinilosServiceAdapter.getAlbum(1)
+
+        // then
+        coVerify { vinilosApi.getAlbum(any()) }
+        Assert.assertEquals(Result.success(album), result)
+    }
+
+    @Test
+    fun `failure when getAlbum`() = runTest {
+        // given
+        val message = ResponseException.NoConnectionException()
+        coEvery { vinilosApi.getAlbum(any()) } throws message
+
+        // when
+        val result = vinilosServiceAdapter.getAlbum(1)
+
+        // then
+        coVerify { vinilosApi.getAlbum(any()) }
         Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
     }
 

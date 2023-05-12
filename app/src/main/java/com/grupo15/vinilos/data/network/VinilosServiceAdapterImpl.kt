@@ -32,6 +32,12 @@ class VinilosServiceAdapterImpl @Inject constructor(
             Result.failure(ResponseException.NoConnectionException())
         }
 
+    override suspend fun getAlbum(id: Int): Result<Album> =
+        try {
+            vinilosApi.getAlbum(id).toResult()
+        } catch (e: Exception) {
+            Result.failure(ResponseException.NoConnectionException())
+        }
     override suspend fun getCollector(id: String): Result<Collector> =
         try {
             vinilosApi.getCollector(id).toResult()

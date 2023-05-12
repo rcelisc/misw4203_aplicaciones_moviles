@@ -6,4 +6,6 @@ interface AlbumDataSource {
 
     suspend fun getAlbums(): Result<List<Album>>
 
+    suspend fun getAlbum(id: Int):Result <Album>
+
 }

@@ -44,4 +44,11 @@ class VinilosApiTest {
         assertNotNull(response.body())
         assertEquals(1, response.body()?.id)
     }
+
+    @Test
+    fun `success when getAlbum`() = runTest {
+        val response = vinilosApi.getAlbum(1)
+        assertNotNull(response.body())
+        assertEquals(1, response.body()?.id)
+    }
 }
