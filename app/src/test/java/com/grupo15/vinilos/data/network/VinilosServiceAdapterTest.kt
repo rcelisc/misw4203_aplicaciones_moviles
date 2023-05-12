@@ -3,6 +3,7 @@ package com.grupo15.vinilos.data.network
 import com.grupo15.vinilos.data.network.utils.ResponseException
 import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
+import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
 import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import com.grupo15.vinilos.presentation.performers.getFakePerformers
@@ -118,7 +119,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getPerformer(any()) } returns Response.success(performer)
 
         // when
-        val result = vinilosServiceAdapter.getPerformer("1")
+        val result = vinilosServiceAdapter.getPerformer(1)
 
         // then
         coVerify { vinilosApi.getPerformer(any()) }
@@ -132,7 +133,7 @@ class VinilosServiceAdapterTest {
         coEvery { vinilosApi.getPerformer(any()) } throws message
 
         // when
-        val result = vinilosServiceAdapter.getPerformer("1")
+        val result = vinilosServiceAdapter.getPerformer(1)
 
         // then
         coVerify { vinilosApi.getPerformer(any()) }
@@ -166,5 +167,34 @@ class VinilosServiceAdapterTest {
         coVerify { vinilosApi.getAlbum(any()) }
         Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
     }
+
+
+    @Test
+    fun `success when getCollector`() = runTest {
+        // given
+        val performer = getFakeCollector(1)
+        coEvery { vinilosApi.getCollector(any()) } returns Response.success(performer)
+
+        // when
+        val result = vinilosServiceAdapter.getCollector(100)
+
+        // then
+        coVerify { vinilosApi.getCollector(any()) }
+        Assert.assertEquals(Result.success(performer), result)
+    }
+    @Test
+    fun `failure when getCollector`() = runTest {
+        // given
+        val message = ResponseException.NoConnectionException()
+        coEvery { vinilosApi.getCollector (any()) } throws message
+
+        // when
+        val result = vinilosServiceAdapter.getCollector(100)
+
+        // then
+        coVerify { vinilosApi.getCollector(any()) }
+        Assert.assertEquals(message.message, result.exceptionOrNull()?.message)
+    }
+
 
 }

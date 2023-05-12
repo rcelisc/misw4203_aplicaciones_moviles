@@ -57,7 +57,7 @@ class PerformerFragment : Fragment(), OnPerformerClickListener {
 
     override fun onPerformerClick(performer: Performer) {
         val intent = Intent(requireContext(), PerformerDetailActivity::class.java)
-        intent.putExtra(PerformerDetailActivity.PERFORMER_ID_KEY, performer.id.toString())
+        intent.putExtra(PerformerDetailActivity.PERFORMER_ID_KEY, performer.id)
         startActivity(intent)
     }
 

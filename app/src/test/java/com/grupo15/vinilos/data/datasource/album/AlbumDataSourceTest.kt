@@ -23,7 +23,7 @@ class AlbumDataSourceTest {
 
     @Before
     fun setup() {
-        albumDataSource = AlbumDataSourceImpl(vinilosServiceAdapter)
+        albumDataSource = RemoteAlbumDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test

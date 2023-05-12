@@ -1,11 +1,11 @@
 package com.grupo15.vinilos.di
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
-import com.grupo15.vinilos.data.datasource.album.AlbumDataSourceImpl
+import com.grupo15.vinilos.data.datasource.album.RemoteAlbumDataSourceImpl
 import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
-import com.grupo15.vinilos.data.datasource.collector.CollectorDataSourceImpl
+import com.grupo15.vinilos.data.datasource.collector.RemoteCollectorDataSourceImpl
 import com.grupo15.vinilos.data.datasource.performer.PerformerDataSource
-import com.grupo15.vinilos.data.datasource.performer.PerformerDataSourceImpl
+import com.grupo15.vinilos.data.datasource.performer.RemotePerformerDataSourceImpl
 import com.grupo15.vinilos.data.network.VinilosApi
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.data.network.VinilosServiceAdapterImpl
@@ -53,17 +53,20 @@ class NetworkModule {
 
     @Singleton
     @Provides
+    @Named("remote")
     fun provideAlbumDataSource(serviceAdapter: VinilosServiceAdapter): AlbumDataSource =
-        AlbumDataSourceImpl(serviceAdapter)
+        RemoteAlbumDataSourceImpl(serviceAdapter)
 
     @Singleton
     @Provides
+    @Named("remote")
     fun providePerformerDataSource(serviceAdapter: VinilosServiceAdapter): PerformerDataSource =
-        PerformerDataSourceImpl(serviceAdapter)
+        RemotePerformerDataSourceImpl(serviceAdapter)
 
     @Singleton
     @Provides
+    @Named("remote")
     fun provideCollectorDataSource(serviceAdapter: VinilosServiceAdapter): CollectorDataSource =
-        CollectorDataSourceImpl(serviceAdapter)
+        RemoteCollectorDataSourceImpl(serviceAdapter)
 
 }

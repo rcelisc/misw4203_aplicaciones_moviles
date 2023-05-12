@@ -1,5 +1,6 @@
 package com.grupo15.vinilos.data.datasource.performer
 
+import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import com.grupo15.vinilos.presentation.performers.getFakePerformers
@@ -18,10 +19,11 @@ class PerformerDataSourceTest {
 
     private val vinilosServiceAdapter = mockk<VinilosServiceAdapter>()
     private lateinit var performerDataSource: PerformerDataSource
+    private lateinit var collectorDataSource: CollectorDataSource
 
     @Before
     fun setup() {
-        performerDataSource = PerformerDataSourceImpl(vinilosServiceAdapter)
+        performerDataSource = RemotePerformerDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test
@@ -59,7 +61,7 @@ class PerformerDataSourceTest {
         coEvery { vinilosServiceAdapter.getPerformer(any()) } returns Result.success(performer)
 
         // when
-        val result = performerDataSource.getPerformer("1")
+        val result = performerDataSource.getPerformer(1)
 
         // then
         coVerify { vinilosServiceAdapter.getPerformer(any()) }
@@ -73,7 +75,7 @@ class PerformerDataSourceTest {
         coEvery { vinilosServiceAdapter.getPerformer(any()) } returns Result.failure(Exception(message))
 
         // when
-        val result = performerDataSource.getPerformer("1")
+        val result = performerDataSource.getPerformer(1)
 
         // then
         coVerify { vinilosServiceAdapter.getPerformer(any()) }

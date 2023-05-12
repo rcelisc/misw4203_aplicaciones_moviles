@@ -16,25 +16,26 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class PerformerRepositoryTest {
 
-    private val performerDataSource = mockk<PerformerDataSource>()
+    private val performerRemoteDataSource = mockk<PerformerDataSource>()
+    private val performerLocalCacheDataSource = mockk<PerformerDataSource>()
     private lateinit var performerRepository: PerformerRepository
 
     @Before
     fun setup() {
-        performerRepository = PerformerRepositoryImpl(performerDataSource)
+        performerRepository = PerformerRepositoryImpl(performerRemoteDataSource, performerLocalCacheDataSource)
     }
 
     @Test
     fun `success when getPerformers`() = runTest {
         // given
         val performers = getFakePerformers()
-        coEvery { performerDataSource.getPerformers() } returns Result.success(performers)
+        coEvery { performerRemoteDataSource.getPerformers() } returns Result.success(performers)
 
         // when
         val result = performerRepository.getPerformers()
 
         // then
-        coVerify { performerDataSource.getPerformers() }
+        coVerify { performerRemoteDataSource.getPerformers() }
         assertEquals(Result.success(performers), result)
     }
 
@@ -42,13 +43,13 @@ class PerformerRepositoryTest {
     fun `failure when getPerformers`() = runTest {
         // given
         val message = "Error from api"
-        coEvery { performerDataSource.getPerformers() } returns Result.failure(Exception(message))
+        coEvery { performerRemoteDataSource.getPerformers() } returns Result.failure(Exception(message))
 
         // when
         val result = performerRepository.getPerformers()
 
         // then
-        coVerify { performerDataSource.getPerformers() }
+        coVerify { performerRemoteDataSource.getPerformers() }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 
@@ -56,28 +57,14 @@ class PerformerRepositoryTest {
     fun `success when getPerformer`() = runTest {
         // given
         val performer = getFakePerformer(1)
-        coEvery { performerDataSource.getPerformer(any()) } returns Result.success(performer)
+        coEvery { performerLocalCacheDataSource.getPerformer(any()) } returns Result.success(performer)
 
         // when
-        val result = performerRepository.getPerformer("1")
+        val result = performerRepository.getPerformer(1)
 
         // then
-        coVerify { performerDataSource.getPerformer(any()) }
+        coVerify { performerLocalCacheDataSource.getPerformer(any()) }
         assertEquals(Result.success(performer), result)
-    }
-
-    @Test
-    fun `failure when getPerformer`() = runTest {
-        // given
-        val message = "Error from api"
-        coEvery { performerDataSource.getPerformer(any()) } returns Result.failure(Exception(message))
-
-        // when
-        val result = performerRepository.getPerformer("1")
-
-        // then
-        coVerify { performerDataSource.getPerformer(any()) }
-        assertEquals(message, result.exceptionOrNull()?.message)
     }
 
 }

@@ -33,7 +33,7 @@ class AlbumDetailActivity : AppCompatActivity() {
             album?.let { loadInfo(it) }
         }
 
-        intent.getIntExtra(ALBUM_ID_KEY,0).let { id ->
+        intent.getIntExtra(ALBUM_ID_KEY, 0).let { id ->
             albumDetailViewModel.getAlbum(id)
         }
 

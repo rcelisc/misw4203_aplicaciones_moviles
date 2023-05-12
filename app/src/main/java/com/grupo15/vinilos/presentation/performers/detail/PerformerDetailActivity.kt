@@ -37,7 +37,7 @@ class PerformerDetailActivity : AppCompatActivity() {
             performer?.let { loadInfo(it) }
         }
 
-        intent.getStringExtra(PERFORMER_ID_KEY)?.let { id ->
+        intent.getIntExtra(PERFORMER_ID_KEY, 0).let { id ->
             performerDetailViewModel.getPerformer(id)
         }
 

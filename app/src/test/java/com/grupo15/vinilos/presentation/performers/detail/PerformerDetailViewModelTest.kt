@@ -38,7 +38,7 @@ class PerformerDetailViewModelTest {
         val idPerformer = 1
         val fakePerformer = getFakePerformer(idPerformer)
         coEvery { performerRepository.getPerformer(any()) } returns Result.success(fakePerformer)
-        viewModel.getPerformer("$idPerformer")
+        viewModel.getPerformer(idPerformer)
         coVerify { performerRepository.getPerformer(any()) }
         Assert.assertEquals(fakePerformer.id, viewModel.performer.value?.id)
         Assert.assertEquals(fakePerformer.name, viewModel.performer.value?.name)
@@ -60,7 +60,7 @@ class PerformerDetailViewModelTest {
         val idPerformer = 1
         val message = "Error from api"
         coEvery { performerRepository.getPerformer(any()) } returns Result.failure(Exception(message))
-        viewModel.getPerformer("$idPerformer")
+        viewModel.getPerformer(idPerformer)
         coVerify { performerRepository.getPerformer(any()) }
         Assert.assertEquals(message, viewModel.error.value)
     }

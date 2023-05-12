@@ -1,7 +1,9 @@
 package com.grupo15.vinilos.data.datasource.collector
 
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
+import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
+import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -20,7 +22,7 @@ class CollectorDataSourceTest {
 
     @Before
     fun setup() {
-        collectorDataSource = CollectorDataSourceImpl(vinilosServiceAdapter)
+        collectorDataSource = RemoteCollectorDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test
@@ -48,6 +50,35 @@ class CollectorDataSourceTest {
 
         // then
         coVerify { vinilosServiceAdapter.getCollectors() }
+        assertEquals(message, result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `success when getCollector`() = runTest {
+        // given
+        val performer = getFakeCollector(1)
+        coEvery { vinilosServiceAdapter.getCollector(any()) } returns Result.success(performer)
+
+        // when
+        val result = collectorDataSource.getCollector(100)
+
+        // then
+        coVerify { vinilosServiceAdapter.getCollector(any()) }
+        assertEquals(Result.success(performer), result)
+    }
+
+
+    @Test
+    fun `failure when getCollector`() = runTest {
+        // given
+        val message = "Error from api"
+        coEvery { vinilosServiceAdapter.getCollector(any()) } returns Result.failure(Exception(message))
+
+        // when
+        val result = collectorDataSource.getCollector(100)
+
+        // then
+        coVerify { vinilosServiceAdapter.getCollector(any()) }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 
