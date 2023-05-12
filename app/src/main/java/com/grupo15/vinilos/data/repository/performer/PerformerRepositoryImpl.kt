@@ -14,7 +14,14 @@ class PerformerRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPerformer(id: Int): Result<Performer?> {
+        val localPerformer = localCacheDataSource.getPerformer(id)
+        return if (localPerformer.getOrNull() != null) {
+            localPerformer
+        } else {
+            val remotePerformer = remoteDataSource.getPerformer(id)
+            remotePerformer.getOrNull()?.let { localCacheDataSource.savePerformer(it) }
+            return remotePerformer
+        }
         return remoteDataSource.getPerformer(id)
     }
-
 }
