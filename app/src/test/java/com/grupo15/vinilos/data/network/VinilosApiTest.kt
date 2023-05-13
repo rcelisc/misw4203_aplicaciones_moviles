@@ -10,7 +10,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class VinilosApiTest {
 
-    lateinit var vinilosApi: VinilosApi
+    private lateinit var vinilosApi: VinilosApi
 
     @Before
     fun setUp() {

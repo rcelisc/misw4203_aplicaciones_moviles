@@ -20,14 +20,11 @@ import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+private const val baseUrl = "https://vinilos-backend-mobile.herokuapp.com"
+
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
-    @Singleton
-    @Provides
-    @Named("BaseUrl")
-    fun provideBaseURL(): String = "https://vinilos-backend-mobile.herokuapp.com"
 
     @Singleton
     @Provides
@@ -39,7 +36,6 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideVinilosApi(
-        @Named("BaseUrl") baseUrl: String,
         converter: MoshiConverterFactory
     ): VinilosApi = Retrofit.Builder()
         .baseUrl(baseUrl)

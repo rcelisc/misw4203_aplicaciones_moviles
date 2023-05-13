@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.data.model.Performer
 import com.grupo15.vinilos.databinding.FragmentPerformerBinding
@@ -21,13 +21,13 @@ class PerformerFragment : Fragment(), OnPerformerClickListener {
 
     private val binding get() = _binding!!
 
+    private val performerViewModel: PerformerViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val performerViewModel =
-            ViewModelProvider(this).get(PerformerViewModel::class.java)
 
         _binding = FragmentPerformerBinding.inflate(inflater, container, false)
         val root: View = binding.root

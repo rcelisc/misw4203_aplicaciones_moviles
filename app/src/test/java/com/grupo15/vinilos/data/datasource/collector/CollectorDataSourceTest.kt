@@ -3,7 +3,6 @@ package com.grupo15.vinilos.data.datasource.collector
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
-import com.grupo15.vinilos.presentation.performers.getFakePerformer
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

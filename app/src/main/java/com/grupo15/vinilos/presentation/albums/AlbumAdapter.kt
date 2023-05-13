@@ -39,8 +39,8 @@ class AlbumAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateAlbums(albumes: List<Album>) {
-        this.albums = albumes
+    fun updateAlbums(albums: List<Album>) {
+        this.albums = albums
         notifyDataSetChanged()
     }
 }
