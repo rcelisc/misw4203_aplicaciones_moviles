@@ -47,6 +47,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.tracing:tracing:1.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
@@ -55,10 +56,10 @@ dependencies {
     testImplementation 'io.mockk:mockk:1.13.4'
 
     // Hilt
-    implementation "com.google.dagger:hilt-android:2.44"
+    implementation "com.google.dagger:hilt-android:2.45"
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.0-alpha01'
-    kapt "com.google.dagger:hilt-compiler:2.44"
-    testImplementation 'com.google.dagger:hilt-android-testing:2.44'
+    kapt "com.google.dagger:hilt-compiler:2.45"
+    testImplementation 'com.google.dagger:hilt-android-testing:2.45'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
