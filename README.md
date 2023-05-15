@@ -7,7 +7,7 @@
 
 # App Vinilos
 
-https://user-images.githubusercontent.com/31069035/235333082-2ca690da-53a6-40ca-9caf-2e54f3da5a9b.mp4
+https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/c8402786-1e0c-49f3-8ac7-12833b337dbe
 
 # Instalar desde apk
 
@@ -95,7 +95,7 @@ Recuerde que Android Studio no cuenta con un Live Reloading por lo que, si reali
 Actualmente la covertura de clases y lineas de código estan en 68%, a continuación se presenta la manera de ejecutar los tests:
 
 1. Identifica la carpeta del paquete que se indica con el nombre (test)
-![image](https://user-images.githubusercontent.com/31069035/235333152-8cee2b9c-bc1a-40a6-be20-6e2730ad5ba3.png)
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/3969b87f-462a-4bc5-9539-98db450388e1)
 
 2. De click derecho sobre el paquete y posteriormente seleccione la opción "Run 'Tests in com.grupo15.vinilos' with Coverage" como se indica a continuación:
 ![Sin título](https://user-images.githubusercontent.com/31069035/235333271-28f4afa9-bfdd-414b-b9b1-3d23f512c6f1.png)
@@ -103,5 +103,14 @@ Actualmente la covertura de clases y lineas de código estan en 68%, a continuac
 3. Al finalizar podrá observar el resultado de los test junto con el coverage en el packete de la aplicación:
 ![image](https://user-images.githubusercontent.com/31069035/235333327-8b5bf470-e738-4e0f-a29d-6a718b403004.png)
 
-Importante prestar atención que estos valores son diferentes al resultado de la barra derecha. Concluir con estos ultimos es erroneo ya que dentro de ello, Android Studio, esta tomando archivos construidos por Hilt lo cual es invalido disminuyendo el coverage. Por ello, la conclusión se toma con el resultado del punto 3.
-![image](https://user-images.githubusercontent.com/31069035/235333357-425fc446-1b3c-4d49-9e92-068b9dab05bd.png)
+Importante prestar atención que estos valores son diferentes al resultado de la barra derecha. Concluir con estos ultimos es erroneo ya que dentro de ello, Android Studio, esta tomando archivos construidos por Hilt lo cual es invalido disminuyendo el coverage. Por ello, la conclusión se toma con el resultado del punto 3.  
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/3969b87f-462a-4bc5-9539-98db450388e1)  
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/e59db09a-36ce-499b-89de-c28a1a1ccac0)  
+
+# Correr E2E Tests
+
+1. Identifica la carpeta del paquete que se indica con el nombre (androidTest)  
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/daedab7b-e97b-412c-84bb-954b24877e66)  
+2. De click derecho sobre el paquete y posteriormente seleccione la opción "Run 'Tests in com.grupo15.vinilos'  
+3. Al finalizar podrá observar el resultado de los test, es importante que abra la app cada vez que la prueba lo solicite.
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/eb1b19ff-149a-4fab-8ba9-e653a2ea3ffe)
