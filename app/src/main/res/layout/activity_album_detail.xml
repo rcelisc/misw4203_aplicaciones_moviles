@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".presentation.albums.detail.AlbumDetailActivity">
+
+    <TextView
+        android:id="@+id/album_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/name_album_detail" />
+
+    <TextView
+        android:id="@+id/album_name_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_cover_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/cover_album_detail" />
+
+    <TextView
+        android:id="@+id/album_cover_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_release_date_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/release_date_album_detail" />
+
+    <TextView
+        android:id="@+id/album_release_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_genre_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/genre_album_detail" />
+
+    <TextView
+        android:id="@+id/album_genre_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_record_label_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/record_label_album_detail" />
+
+    <TextView
+        android:id="@+id/album_record_label_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_description_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/description_album_detail" />
+
+    <TextView
+        android:id="@+id/album_description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+    <TextView
+        android:id="@+id/album_tracks_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        android:text="@string/tracks_album_detail" />
+
+    <TextView
+        android:id="@+id/album_tracks_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_textview_shape" />
+
+</LinearLayout>

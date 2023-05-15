@@ -10,7 +10,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class VinilosApiTest {
 
-    lateinit var vinilosApi: VinilosApi
+    private lateinit var vinilosApi: VinilosApi
 
     @Before
     fun setUp() {
@@ -36,5 +36,26 @@ class VinilosApiTest {
         val response = vinilosApi.getCollectors()
         assertNotNull(response.body())
         assertEquals(10, response.body()?.size)
+    }
+
+    @Test
+    fun `success when getPerformer`() = runTest {
+        val response = vinilosApi.getPerformer(1)
+        assertNotNull(response.body())
+        assertEquals(1, response.body()?.id)
+    }
+
+    @Test
+    fun `success when getCollector`() = runTest {
+        val response = vinilosApi.getCollector(1)
+        assertNotNull(response.body())
+        assertEquals(1, response.body()?.id)
+    }
+
+    @Test
+    fun `success when getAlbum`() = runTest {
+        val response = vinilosApi.getAlbum(1)
+        assertNotNull(response.body())
+        assertEquals(1, response.body()?.id)
     }
 }

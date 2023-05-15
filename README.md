@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/31069035/235333082-2ca690da-53a6-40ca-
 
 # Instalar desde apk
 
-1. Descargar el apk que esta localizado en apk-releases
+1. Descargar el apk que esta localizado en app/release/app-release.apk
 2. Localizar apk en el celular
 3. Instalar apk  
 4. Es posible que Google no permita la instalación del apk por ser una fuente desconocida.  

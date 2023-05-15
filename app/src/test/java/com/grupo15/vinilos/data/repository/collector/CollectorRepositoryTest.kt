@@ -2,6 +2,7 @@ package com.grupo15.vinilos.data.repository.collector
 
 import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
 import com.grupo15.vinilos.presentation.collectors.getFakeCollectors
+import com.grupo15.vinilos.presentation.collectors.getFakeCollector
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -15,25 +16,26 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class CollectorRepositoryTest {
 
-    private val collectorDataSource = mockk<CollectorDataSource>()
+    private val collectorRemoteDataSource = mockk<CollectorDataSource>()
+    private val collectorLocalCacheDataSource = mockk<CollectorDataSource>()
     private lateinit var collectorRepository: CollectorRepository
 
     @Before
     fun setup() {
-        collectorRepository = CollectorRepositoryImpl(collectorDataSource)
+        collectorRepository = CollectorRepositoryImpl(collectorRemoteDataSource, collectorLocalCacheDataSource)
     }
 
     @Test
     fun `success when getCollectors`() = runTest {
         // given
         val collectors = getFakeCollectors()
-        coEvery { collectorDataSource.getCollectors() } returns Result.success(collectors)
+        coEvery { collectorRemoteDataSource.getCollectors() } returns Result.success(collectors)
 
         // when
         val result = collectorRepository.getCollectors()
 
         // then
-        coVerify { collectorDataSource.getCollectors() }
+        coVerify { collectorRemoteDataSource.getCollectors() }
         assertEquals(Result.success(collectors), result)
     }
 
@@ -41,14 +43,28 @@ class CollectorRepositoryTest {
     fun `failure when getCollectors`() = runTest {
         // given
         val message = "Error from api"
-        coEvery { collectorDataSource.getCollectors() } returns Result.failure(Exception(message))
+        coEvery { collectorRemoteDataSource.getCollectors() } returns Result.failure(Exception(message))
 
         // when
         val result = collectorRepository.getCollectors()
 
         // then
-        coVerify { collectorDataSource.getCollectors() }
+        coVerify { collectorRemoteDataSource.getCollectors() }
         assertEquals(message, result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `success when getCollector`() = runTest {
+        // given
+        val collector = getFakeCollector(1)
+        coEvery {  collectorLocalCacheDataSource.getCollector (any()) } returns Result.success(collector)
+
+        // when
+        val result = collectorRepository.getCollector(1)
+
+        // then
+        coVerify { collectorLocalCacheDataSource.getCollector(any()) }
+        assertEquals(Result.success(collector), result)
     }
 
 }

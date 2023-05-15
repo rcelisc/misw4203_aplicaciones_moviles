@@ -1,11 +1,11 @@
 package com.grupo15.vinilos.di
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
-import com.grupo15.vinilos.data.datasource.album.AlbumDataSourceImpl
+import com.grupo15.vinilos.data.datasource.album.RemoteAlbumDataSourceImpl
 import com.grupo15.vinilos.data.datasource.collector.CollectorDataSource
-import com.grupo15.vinilos.data.datasource.collector.CollectorDataSourceImpl
+import com.grupo15.vinilos.data.datasource.collector.RemoteCollectorDataSourceImpl
 import com.grupo15.vinilos.data.datasource.performer.PerformerDataSource
-import com.grupo15.vinilos.data.datasource.performer.PerformerDataSourceImpl
+import com.grupo15.vinilos.data.datasource.performer.RemotePerformerDataSourceImpl
 import com.grupo15.vinilos.data.network.VinilosApi
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import com.grupo15.vinilos.data.network.VinilosServiceAdapterImpl
@@ -20,14 +20,11 @@ import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+private const val baseUrl = "https://vinilos-backend-mobile.herokuapp.com"
+
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-
-    @Singleton
-    @Provides
-    @Named("BaseUrl")
-    fun provideBaseURL(): String = "https://vinilos-backend-mobile.herokuapp.com"
 
     @Singleton
     @Provides
@@ -39,7 +36,6 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideVinilosApi(
-        @Named("BaseUrl") baseUrl: String,
         converter: MoshiConverterFactory
     ): VinilosApi = Retrofit.Builder()
         .baseUrl(baseUrl)
@@ -53,17 +49,20 @@ class NetworkModule {
 
     @Singleton
     @Provides
+    @Named("remote")
     fun provideAlbumDataSource(serviceAdapter: VinilosServiceAdapter): AlbumDataSource =
-        AlbumDataSourceImpl(serviceAdapter)
+        RemoteAlbumDataSourceImpl(serviceAdapter)
 
     @Singleton
     @Provides
+    @Named("remote")
     fun providePerformerDataSource(serviceAdapter: VinilosServiceAdapter): PerformerDataSource =
-        PerformerDataSourceImpl(serviceAdapter)
+        RemotePerformerDataSourceImpl(serviceAdapter)
 
     @Singleton
     @Provides
+    @Named("remote")
     fun provideCollectorDataSource(serviceAdapter: VinilosServiceAdapter): CollectorDataSource =
-        CollectorDataSourceImpl(serviceAdapter)
+        RemoteCollectorDataSourceImpl(serviceAdapter)
 
 }

@@ -6,4 +6,8 @@ interface PerformerDataSource {
 
     suspend fun getPerformers(): Result<List<Performer>>
 
+    suspend fun getPerformer(id: Int): Result<Performer?>
+
+    suspend fun savePerformer(performer: Performer)
+
 }

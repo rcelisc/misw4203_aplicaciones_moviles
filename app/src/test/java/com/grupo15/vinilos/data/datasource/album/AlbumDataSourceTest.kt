@@ -1,6 +1,7 @@
 package com.grupo15.vinilos.data.datasource.album
 
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
+import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -20,7 +21,7 @@ class AlbumDataSourceTest {
 
     @Before
     fun setup() {
-        albumDataSource = AlbumDataSourceImpl(vinilosServiceAdapter)
+        albumDataSource = RemoteAlbumDataSourceImpl(vinilosServiceAdapter)
     }
 
     @Test
@@ -48,6 +49,33 @@ class AlbumDataSourceTest {
 
         // then
         coVerify { vinilosServiceAdapter.getAlbums() }
+        assertEquals(message, result.exceptionOrNull()?.message)
+    }
+    @Test
+    fun `success when album detail`() = runTest {
+        // given
+        val album = getFakeAlbum(1)
+        coEvery { vinilosServiceAdapter.getAlbum(any()) } returns Result.success(album)
+
+        // when
+        val result = albumDataSource.getAlbum(1)
+
+        // then
+        coVerify { vinilosServiceAdapter.getAlbum(any()) }
+        assertEquals(Result.success(album), result)
+    }
+
+    @Test
+    fun `failure when getAlbum`() = runTest {
+        // given
+        val message = "Error from api"
+        coEvery { vinilosServiceAdapter.getAlbum(any()) } returns Result.failure(Exception(message))
+
+        // when
+        val result = albumDataSource.getAlbum(1)
+
+        // then
+        coVerify { vinilosServiceAdapter.getAlbum(any()) }
         assertEquals(message, result.exceptionOrNull()?.message)
     }
 
