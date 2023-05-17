@@ -4,6 +4,8 @@ import android.util.LruCache
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.data.model.Performer
+import com.grupo15.vinilos.data.model.SetTrackResponse
+import com.grupo15.vinilos.data.model.Track
 
 class VinilosCacheAdapterImpl : VinilosCacheAdapter {
 
@@ -46,5 +48,6 @@ class VinilosCacheAdapterImpl : VinilosCacheAdapter {
             performers.put(performer.id, performer)
         }
     }
+
 
 }
