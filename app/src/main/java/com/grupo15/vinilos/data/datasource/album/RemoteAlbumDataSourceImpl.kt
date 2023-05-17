@@ -1,6 +1,8 @@
 package com.grupo15.vinilos.data.datasource.album
 
 import com.grupo15.vinilos.data.model.Album
+import com.grupo15.vinilos.data.model.SetTrackResponse
+import com.grupo15.vinilos.data.model.Track
 import com.grupo15.vinilos.data.network.VinilosServiceAdapter
 import javax.inject.Inject
 
@@ -13,6 +15,10 @@ class RemoteAlbumDataSourceImpl @Inject constructor(
     }
 
     override suspend fun saveAlbum(album: Album) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun setTrackToAlbum(id: Int, track: Track): Result<SetTrackResponse> {
         TODO("Not yet implemented")
     }
 
