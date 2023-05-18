@@ -25,4 +25,13 @@
     <string name="record_label_album_detail">Sello discográfico</string>
     <string name="description_album_detail">Descripción</string>
     <string name="tracks_album_detail">Tracks</string>
+    <string name="add_track_album_button">Agregar track</string>
+    <string name="title_track">Agregar track</string>
+    <string name="add_track_button">Agregar</string>
+    <string name="name_track">Nombre</string>
+    <string name="duration_track">Duración</string>
+    <string name="duration_track_hint">hh:mm:ss</string>
+    <string name="add_track_message">Track agregado exitosamente</string>
+    <string name="invalid_format_duration">Formato de duración invalido, debe ser hh:mm:ss</string>
+
 </resources>
