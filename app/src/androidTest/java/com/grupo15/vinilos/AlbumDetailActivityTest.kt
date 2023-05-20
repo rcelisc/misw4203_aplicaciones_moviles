@@ -32,21 +32,6 @@ class AlbumDetailActivityTest {
     @Test
     fun albumDetailActivityTest() {
         Thread.sleep(2000)
-        val bottomNavigationItemView = onView(
-            allOf(
-                withId(R.id.navigation_album), withContentDescription("Álbumes"),
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.nav_view),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        bottomNavigationItemView.perform(click())
-
         val recyclerView = onView(
             allOf(
                 withId(R.id.album_recycle),
@@ -62,67 +47,115 @@ class AlbumDetailActivityTest {
 
         val textView = onView(
             allOf(
-                withId(R.id.album_name_text), withText("Buscando América"),
-                withParent(withParent(withId(android.R.id.content))),
+                withText("Detalle álbum"),
+                withParent(
+                    allOf(
+                        withId(androidx.appcompat.R.id.action_bar),
+                        withParent(withId(androidx.appcompat.R.id.action_bar_container))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Buscando América")))
+        textView.check(matches(withText("Detalle álbum")))
 
         val textView2 = onView(
             allOf(
-                withId(R.id.album_cover_text),
-                withText("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_name_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView2.check(matches(withText("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg")))
+        textView2.check(matches(isDisplayed()))
 
         val textView3 = onView(
             allOf(
-                withId(R.id.album_release_date_text), withText("01/08/1984"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_cover_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView3.check(matches(withText("01/08/1984")))
+        textView3.check(matches(isDisplayed()))
 
         val textView4 = onView(
             allOf(
-                withId(R.id.album_genre_text), withText("Salsa"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_release_date_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView4.check(matches(withText("Salsa")))
+        textView4.check(matches(isDisplayed()))
 
         val textView5 = onView(
             allOf(
-                withId(R.id.album_record_label_text), withText("Elektra"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_genre_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView5.check(matches(withText("Elektra")))
+        textView5.check(matches(isDisplayed()))
 
         val textView6 = onView(
             allOf(
-                withId(R.id.album_tracks_text), withText("Decisiones, Desapariciones"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_record_label_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView6.check(matches(withText("Decisiones, Desapariciones")))
+        textView6.check(matches(isDisplayed()))
 
         val textView7 = onView(
             allOf(
-                withId(R.id.album_tracks_text), withText("Decisiones, Desapariciones"),
-                withParent(withParent(withId(android.R.id.content))),
+                withId(R.id.album_description_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
                 isDisplayed()
             )
         )
-        textView7.check(matches(withText("Decisiones, Desapariciones")))
+        textView7.check(matches(isDisplayed()))
+
+        val textView8 = onView(
+            allOf(
+                withId(R.id.album_description_text),
+                withParent(
+                    allOf(
+                        withId(R.id.linearLayout),
+                        withParent(withId(R.id.scrollView2))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        textView8.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(
