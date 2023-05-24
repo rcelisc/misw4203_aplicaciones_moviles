@@ -1,6 +1,7 @@
 package com.grupo15.vinilos.data.repository.album
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
+import com.grupo15.vinilos.data.model.Track
 import com.grupo15.vinilos.presentation.albums.getFakeAlbum
 import com.grupo15.vinilos.presentation.albums.getFakeAlbums
 import io.mockk.coEvery
@@ -65,6 +66,16 @@ class AlbumRepositoryTest {
         // then
         coVerify { albumLocalCacheDataSource.getAlbum(any()) }
         assertEquals(Result.success(album), result)
+    }
+
+    fun `success when track to album`() = runTest {
+        // given
+        val album = getFakeAlbum(1)
+
+        // when
+        val result = albumRepository.setTrackToAlbum(1, track = Track(101,"track 1", "05:00"))
+
+        assertEquals(Result.success(album),result)
     }
 
 }
