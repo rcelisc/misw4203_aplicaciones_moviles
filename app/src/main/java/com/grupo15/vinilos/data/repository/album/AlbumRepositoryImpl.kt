@@ -2,6 +2,7 @@ package com.grupo15.vinilos.data.repository.album
 
 import com.grupo15.vinilos.data.datasource.album.AlbumDataSource
 import com.grupo15.vinilos.data.model.Album
+import com.grupo15.vinilos.data.model.Track
 import javax.inject.Inject
 
 class AlbumRepositoryImpl @Inject constructor(
@@ -22,6 +23,10 @@ class AlbumRepositoryImpl @Inject constructor(
             remoteCollector.getOrNull()?.let { localCacheDataSource.saveAlbum(it) }
             return remoteCollector
         }
+    }
+
+    override suspend fun setTrackToAlbum(id: Int, track: Track) {
+        TODO("Not yet implemented")
     }
 
 }
