@@ -30,8 +30,4 @@ class AlbumRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun setTrackToAlbum(id: Int, track: Track) {
-        TODO("Not yet implemented")
-    }
-
 }
