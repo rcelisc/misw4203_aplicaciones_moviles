@@ -3,8 +3,12 @@ package com.grupo15.vinilos.data.network
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.data.model.Performer
+import com.grupo15.vinilos.data.model.SetTrackResponse
+import com.grupo15.vinilos.data.model.Track
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface VinilosApi {
@@ -26,4 +30,8 @@ interface VinilosApi {
 
     @GET("/musicians/{id}")
     suspend fun getPerformer(@Path("id") id: Int): Response<Performer>
+
+    @POST("/albums/{id}/tracks")
+    suspend fun setTrackToAlbum(@Path("id") id: Int, @Body track: Track): Response<SetTrackResponse>
+
 }

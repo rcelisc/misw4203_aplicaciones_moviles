@@ -17,7 +17,7 @@ data class Album(
     @Json(name = "genre")
     val genre: String,
     @Json(name = "recordLabel")
-    val recordLabel: String,
+    val recordLabel: String?,
     @Json(name = "tracks")
     val tracks: List<Track>,
     @Json(name = "performers")

@@ -1,18 +1,23 @@
 package com.grupo15.vinilos.presentation.albums.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import com.grupo15.vinilos.R
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.databinding.ActivityAlbumDetailBinding
+import com.grupo15.vinilos.presentation.albums.detail.tracks.TrackActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Locale
+import java.util.regex.Pattern
 
 private const val RELEASE_DATE_FORMAT: String = "dd/MM/yyyy"
 private const val TRACKS_SEPARATOR: String = ", "
+private const val INVALID_ALBUM_ID = -1
 
 @AndroidEntryPoint
 class AlbumDetailActivity : AppCompatActivity() {
@@ -20,6 +25,8 @@ class AlbumDetailActivity : AppCompatActivity() {
     private val albumDetailViewModel: AlbumDetailViewModel by viewModels()
 
     private lateinit var binding: ActivityAlbumDetailBinding
+
+    private var albumId: Int = INVALID_ALBUM_ID
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +40,17 @@ class AlbumDetailActivity : AppCompatActivity() {
             album?.let { loadInfo(it) }
         }
 
-        intent.getIntExtra(ALBUM_ID_KEY, 0).let { id ->
-            albumDetailViewModel.getAlbum(id)
+        intent.getIntExtra(ALBUM_ID_KEY, INVALID_ALBUM_ID).let { id ->
+            albumId = id
         }
 
+        binding.addTrackButton.setOnClickListener { onAddTrackClick() }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        albumDetailViewModel.getAlbum(albumId)
     }
 
     private fun loadInfo(album: Album) {
@@ -50,8 +64,13 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding.albumGenreText.text = album.genre
         binding.albumRecordLabelText.text = album.recordLabel
         binding.albumDescriptionText.text = album.description
-        binding.albumTracksText.text =
-            album.tracks.joinToString(TRACKS_SEPARATOR) { it.name }
+
+        if (album.tracks.isNotEmpty()) {
+            binding.albumTracksLabel.visibility = VISIBLE
+            binding.albumTracksText.visibility = VISIBLE
+            binding.albumTracksText.text = album.tracks.joinToString(TRACKS_SEPARATOR) { it.name }
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -60,6 +79,11 @@ class AlbumDetailActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun onAddTrackClick() {
+        val intent = Intent(this, TrackActivity::class.java)
+        intent.putExtra(TrackActivity.ALBUM_ID_KEY, albumId)
+        startActivity(intent)
     }
 
     companion object {
