@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.databinding.FragmentAlbumBinding
+import com.grupo15.vinilos.presentation.albums.create.AlbumCreateActivity
 import com.grupo15.vinilos.presentation.albums.detail.AlbumDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,6 +45,7 @@ class AlbumFragment : Fragment(), OnAlbumClickListener {
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         }
         albumsViewModel.getAlbums()
+        binding.floatingActionButton.setOnClickListener { onCreateAlbum() }
         return root
 
     }
@@ -56,6 +58,11 @@ class AlbumFragment : Fragment(), OnAlbumClickListener {
     override fun onAlbumClick(album: Album) {
         val intent = Intent(requireContext(), AlbumDetailActivity::class.java)
         intent.putExtra(AlbumDetailActivity.ALBUM_ID_KEY, album.id)
+        startActivity(intent)
+    }
+
+    private fun onCreateAlbum() {
+        val intent = Intent(requireContext(), AlbumCreateActivity::class.java)
         startActivity(intent)
     }
 

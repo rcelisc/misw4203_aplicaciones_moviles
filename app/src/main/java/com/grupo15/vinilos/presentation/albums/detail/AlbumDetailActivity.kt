@@ -13,7 +13,6 @@ import com.grupo15.vinilos.presentation.albums.detail.tracks.TrackActivity
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Locale
-import java.util.regex.Pattern
 
 private const val RELEASE_DATE_FORMAT: String = "dd/MM/yyyy"
 private const val TRACKS_SEPARATOR: String = ", "

@@ -11,6 +11,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @HiltViewModel
 class AlbumViewModel @Inject constructor(
@@ -21,6 +23,9 @@ class AlbumViewModel @Inject constructor(
     private val _albums = MutableLiveData(emptyList<Album>())
     val albums: LiveData<List<Album>> = _albums
 
+    private val _albumCreated = MutableLiveData<Album>()
+    val albumCreated: LiveData<Album> = _albumCreated
+
     private val _error = MutableLiveData<String>()
     val error: LiveData<String> = _error
 
@@ -29,12 +34,43 @@ class AlbumViewModel @Inject constructor(
             val result = albumRepository.getAlbums()
             if (result.isSuccess) {
                 val albums = result.getOrNull()
-                if (!albums.isNullOrEmpty())
-                    _albums.postValue(albums)
+                if (!albums.isNullOrEmpty()) _albums.postValue(albums)
             } else {
                 val error = result.exceptionOrNull()
-                if (error != null)
-                    _error.postValue(error.message)
+                if (error != null) _error.postValue(error.message)
+            }
+        }
+    }
+
+    fun createAlbum(
+        name: String,
+        cover: String,
+        releaseDate: String,
+        description: String,
+        genre: String,
+        recordLabel: String
+    ) {
+        viewModelScope.launch(dispatcherIO) {
+            val dateFormat = SimpleDateFormat("dd/mm/yyyy")
+            val date: Date = dateFormat.parse(releaseDate)
+            val newAlbum = Album(
+                name = name,
+                cover = cover,
+                releaseDate = date,
+                description = description,
+                genre = genre,
+                recordLabel = recordLabel
+            )
+            val result = albumRepository.createAlbum(newAlbum)
+            if (result.isSuccess) {
+                val album = result.getOrNull()
+                album?.let {
+                    _albumCreated.postValue(it)
+                }
+
+            } else {
+                val error = result.exceptionOrNull()
+                if (error != null) _error.postValue(error.message)
             }
         }
     }

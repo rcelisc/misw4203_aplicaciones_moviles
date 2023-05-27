@@ -29,6 +29,7 @@ class AlbumRepositoryImpl @Inject constructor(
             return remoteCollector
         }
     }
+
     override suspend fun createAlbum(album: Album): Result<Album> {
         return remoteDataSource.createAlbum(album)
     }
