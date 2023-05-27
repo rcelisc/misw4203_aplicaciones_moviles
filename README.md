@@ -7,7 +7,9 @@
 
 # App Vinilos
 
-![App](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/2ea24978-a78d-400b-b20b-3acfc58a1499)
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/26532695-19b5-46f4-8c74-79156d9c74c0)
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/65a5107c-b2d4-4cb6-9769-bb649a21ab34)
+![image](https://github.com/rcelisc/misw4203_aplicaciones_moviles/assets/31069035/240c8b6b-3088-49e8-80e9-2c212e9d7a6e)
 
 # Instalar desde apk
 
