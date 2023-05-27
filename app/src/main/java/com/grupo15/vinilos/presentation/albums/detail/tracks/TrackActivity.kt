@@ -29,6 +29,7 @@ class TrackActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.title_track)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeActionContentDescription(getString(R.string.btn_go_back))
 
         intent.getIntExtra(ALBUM_ID_KEY, INVALID_ALBUM_ID).let { id ->
             albumId = id

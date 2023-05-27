@@ -32,6 +32,7 @@ class PerformerDetailActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.title_performer_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeActionContentDescription(getString(R.string.btn_go_back))
 
         performerDetailViewModel.performer.observe(this) { performer ->
             performer?.let { loadInfo(it) }

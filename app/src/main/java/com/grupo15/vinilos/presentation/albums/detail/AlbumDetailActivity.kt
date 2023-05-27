@@ -34,6 +34,7 @@ class AlbumDetailActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.title_album_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeActionContentDescription(getString(R.string.btn_go_back))
 
         albumDetailViewModel.album.observe(this) { album ->
             album?.let { loadInfo(it) }

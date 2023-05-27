@@ -25,6 +25,7 @@ class CollectorDetailActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.title_collector_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeActionContentDescription(getString(R.string.btn_go_back))
 
         collectorDetailViewModel.collector.observe(this) { collector ->
             collector?.let { loadInfo(it) }

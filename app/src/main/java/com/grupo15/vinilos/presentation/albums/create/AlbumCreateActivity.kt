@@ -25,6 +25,7 @@ class AlbumCreateActivity : AppCompatActivity() {
 
         supportActionBar?.title = getString(R.string.add_album_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeActionContentDescription(getString(R.string.btn_go_back))
 
         albumViewModel.albumCreated.observe(this) { album ->
             if (album !== null) {
