@@ -3,6 +3,8 @@ package com.grupo15.vinilos.data.cache
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.data.model.Performer
+import com.grupo15.vinilos.data.model.SetTrackResponse
+import com.grupo15.vinilos.data.model.Track
 
 interface VinilosCacheAdapter {
 
@@ -18,10 +20,11 @@ interface VinilosCacheAdapter {
 
     fun getPerformer(performerId: Int): Performer?
 
-    fun saveAlbum(album: Album)
+    fun createAlbum(album: Album):Album
 
     fun saveCollector(collector: Collector)
 
     fun savePerformer(performer: Performer)
 
+    //fun setTrackToAlbum(id: Int, track: Track): SetTrackResponse
 }

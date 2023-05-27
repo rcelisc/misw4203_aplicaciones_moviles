@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Track(
     @Json(name = "id")
-    val id: Int,
+    val id: Int? = null,
     @Json(name = "name")
     val name: String,
     @Json(name = "duration")

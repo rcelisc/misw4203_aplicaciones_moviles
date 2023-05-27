@@ -32,6 +32,7 @@ class PerformerDetailActivityTest {
 
     @Test
     fun performerDetailActivityTest() {
+        Thread.sleep(2000)
         val bottomNavigationItemView = onView(
             allOf(
                 withId(R.id.navigation_performer), withContentDescription("Artistas"),
@@ -47,6 +48,7 @@ class PerformerDetailActivityTest {
         )
         bottomNavigationItemView.perform(click())
 
+        Thread.sleep(2000)
         val imageView = onView(
             allOf(
                 withId(R.id.imageView), withContentDescription("Ir a detalle artista"),

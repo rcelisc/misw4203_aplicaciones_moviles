@@ -4,6 +4,8 @@ import android.util.LruCache
 import com.grupo15.vinilos.data.model.Album
 import com.grupo15.vinilos.data.model.Collector
 import com.grupo15.vinilos.data.model.Performer
+import com.grupo15.vinilos.data.model.SetTrackResponse
+import com.grupo15.vinilos.data.model.Track
 
 class VinilosCacheAdapterImpl : VinilosCacheAdapter {
 
@@ -29,10 +31,11 @@ class VinilosCacheAdapterImpl : VinilosCacheAdapter {
 
     override fun getPerformer(performerId: Int): Performer? = performers[performerId]
 
-    override fun saveAlbum(album: Album) {
+    override fun createAlbum(album: Album):Album {
         if (albums[album.id] == null) {
             albums.put(album.id, album)
         }
+        return album
     }
 
     override fun saveCollector(collector: Collector) {
@@ -46,5 +49,6 @@ class VinilosCacheAdapterImpl : VinilosCacheAdapter {
             performers.put(performer.id, performer)
         }
     }
+
 
 }
