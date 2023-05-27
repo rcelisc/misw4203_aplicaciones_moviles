@@ -5,7 +5,7 @@ import java.util.Date
 
 data class Album(
     @Json(name = "id")
-    val id: Int,
+    val id: Int? = null,
     @Json(name = "name")
     val name: String,
     @Json(name = "cover")
@@ -19,10 +19,10 @@ data class Album(
     @Json(name = "recordLabel")
     val recordLabel: String?,
     @Json(name = "tracks")
-    val tracks: List<Track>,
+    val tracks: List<Track>? = null,
     @Json(name = "performers")
-    val performers: List<Performer>,
+    val performers: List<Performer>? = null,
     @Json(name = "comments")
-    val comments: List<Comment>
+    val comments: List<Comment>? = null
 )
 

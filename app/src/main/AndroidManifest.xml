@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Vinilos"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.albums.create.AlbumCreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.albums.detail.tracks.TrackActivity"
             android:exported="false" />
         <activity

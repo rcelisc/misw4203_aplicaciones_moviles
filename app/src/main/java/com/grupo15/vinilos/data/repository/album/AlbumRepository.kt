@@ -12,4 +12,6 @@ interface AlbumRepository {
 
     suspend fun setTrackToAlbum(id: Int, track: Track): Result<SetTrackResponse>
 
+    suspend fun createAlbum(album: Album): Result<Album>
+
 }
