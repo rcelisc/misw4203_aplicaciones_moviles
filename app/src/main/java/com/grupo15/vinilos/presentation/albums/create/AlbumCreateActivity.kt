@@ -45,8 +45,8 @@ class AlbumCreateActivity : AppCompatActivity() {
                     cover = binding.albumCoverText.text.toString(),
                     releaseDate = binding.albumReleaseDateText.text.toString(),
                     description = binding.albumDescriptionText.text.toString(),
-                    genre = binding.albumGenreText.text.toString(),
-                    recordLabel = binding.albumRecordLabelText.text.toString()
+                    genre = binding.albumGenreText.selectedItem.toString(),
+                    recordLabel = binding.albumRecordLabelText.selectedItem.toString()
                 )
             } else {
                 Toast.makeText(this, getString(R.string.invalid_format_date), Toast.LENGTH_LONG)

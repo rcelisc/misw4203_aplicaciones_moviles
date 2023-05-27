@@ -22,7 +22,22 @@
     <string name="cover_album_detail">Portada</string>
     <string name="release_date_album_detail">Fecha de lanzamiento</string>
     <string name="genre_album_detail">Género</string>
+    <string-array name="genre_options">
+        <item>Seleccionar</item>
+        <item>Classical</item>
+        <item>Salsa</item>
+        <item>Rock</item>
+        <item>Folk</item>
+    </string-array>
     <string name="record_label_album_detail">Sello discográfico</string>
+    <string-array name="record_options">
+        <item>Seleccionar</item>
+        <item>Sony Music</item>
+        <item>EMI</item>
+        <item>Discos Fuentes</item>
+        <item>Elektra</item>
+        <item>Fania Records</item>
+    </string-array>
     <string name="description_album_detail">Descripción</string>
     <string name="tracks_album_detail">Tracks</string>
     <string name="add_track_album_button">Agregar track</string>
@@ -36,7 +51,7 @@
     <string name="add_album_button">Crear</string>
     <string name="add_album_title">Crear álbum</string>
     <string name="date_format_placeholder">dd/mm/yyyy</string>
-    <string name="create_album_message">¡Álbum creado exitosamente!</string>
+    <string name="create_album_message">Álbum creado exitosamente</string>
     <string name="invalid_format_date">Formato de fecha inválido, debe ser dd/mm/yyyy</string>
 
 </resources>
