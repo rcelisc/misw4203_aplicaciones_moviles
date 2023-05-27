@@ -31,6 +31,9 @@ interface VinilosApi {
     @GET("/musicians/{id}")
     suspend fun getPerformer(@Path("id") id: Int): Response<Performer>
 
+    @POST("/albums")
+    suspend fun createAlbum(@Body album: Album):Response <Album>
+
     @POST("/albums/{id}/tracks")
     suspend fun setTrackToAlbum(@Path("id") id: Int, @Body track: Track): Response<SetTrackResponse>
 

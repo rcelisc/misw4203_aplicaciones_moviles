@@ -25,9 +25,12 @@ class AlbumRepositoryImpl @Inject constructor(
             localCollector
         } else {
             val remoteCollector = remoteDataSource.getAlbum(id)
-            remoteCollector.getOrNull()?.let { localCacheDataSource.saveAlbum(it) }
+            remoteCollector.getOrNull()?.let { localCacheDataSource.createAlbum(it) }
             return remoteCollector
         }
+    }
+    override suspend fun createAlbum(album: Album): Result<Album> {
+        return remoteDataSource.createAlbum(album)
     }
 
 }

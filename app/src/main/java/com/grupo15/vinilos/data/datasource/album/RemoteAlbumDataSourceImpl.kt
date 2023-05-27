@@ -14,8 +14,8 @@ class RemoteAlbumDataSourceImpl @Inject constructor(
         return vinilosServiceAdapter.getAlbums()
     }
 
-    override suspend fun saveAlbum(album: Album) {
-        TODO("Not yet implemented")
+    override suspend fun createAlbum(album: Album):Result<Album> {
+        return vinilosServiceAdapter.createAlbum(album)
     }
 
     override suspend fun setTrackToAlbum(id: Int, track: Track): Result<SetTrackResponse> {

@@ -18,8 +18,8 @@ class LocalCacheAlbumDataSourceImpl @Inject constructor(
         return Result.success(vinilosCacheAdapter.getAlbum(id))
     }
 
-    override suspend fun saveAlbum(album: Album) {
-        return vinilosCacheAdapter.saveAlbum(album)
+    override suspend fun createAlbum(album: Album): Result<Album> {
+        return Result.success(vinilosCacheAdapter.createAlbum(album))
     }
 
     override suspend fun setTrackToAlbum(id: Int, track: Track): Result<SetTrackResponse> {
