@@ -29,8 +29,9 @@ class TrackViewModel @Inject constructor(
             val newTrack = Track(name = nameTrack, duration = duration)
             val result = albumRepository.setTrackToAlbum(id = albumId, track = newTrack)
             if (result.isSuccess) {
-                val album = result.getOrNull()
-                _tracks.postValue(album?.album?.tracks)
+                result.getOrNull()?.album?.tracks.let { tracks ->
+                    _tracks.postValue(tracks)
+                }
             } else {
                 val error = result.exceptionOrNull()
                 if (error != null)
