@@ -9,7 +9,7 @@ interface AlbumRepository {
     suspend fun getAlbums(): Result<List<Album>>
 
     suspend fun getAlbum(id: Int): Result<Album?>
-
+    suspend fun createAlbum(album: Album): Result <Album>
     suspend fun setTrackToAlbum(id: Int, track: Track): Result<SetTrackResponse>
 
 }

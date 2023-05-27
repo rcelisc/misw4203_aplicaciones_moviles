@@ -20,7 +20,7 @@ interface VinilosCacheAdapter {
 
     fun getPerformer(performerId: Int): Performer?
 
-    fun saveAlbum(album: Album)
+    fun createAlbum(album: Album):Album
 
     fun saveCollector(collector: Collector)
 

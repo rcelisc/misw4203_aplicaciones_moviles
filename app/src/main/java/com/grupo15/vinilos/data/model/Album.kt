@@ -19,10 +19,10 @@ data class Album(
     @Json(name = "recordLabel")
     val recordLabel: String?,
     @Json(name = "tracks")
-    val tracks: List<Track>,
+    val tracks: List<Track>?,
     @Json(name = "performers")
-    val performers: List<Performer>,
+    val performers: List<Performer>?,
     @Json(name = "comments")
-    val comments: List<Comment>
+    val comments: List<Comment>?
 )
 
