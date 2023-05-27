@@ -21,8 +21,8 @@ class AlbumTest {
         assertEquals("Album description", album.description)
         assertEquals("Rock", album.genre)
         assertEquals("Record Label", album.recordLabel)
-        assertEquals(0, album.tracks.size)
-        assertEquals(0, album.performers.size)
-        assertEquals(0, album.comments.size)
+        assertEquals(0, album.tracks?.size)
+        assertEquals(0, album.performers?.size)
+        assertEquals(0, album.comments?.size)
     }
 }

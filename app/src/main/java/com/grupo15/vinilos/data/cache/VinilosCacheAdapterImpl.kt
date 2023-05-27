@@ -31,10 +31,11 @@ class VinilosCacheAdapterImpl : VinilosCacheAdapter {
 
     override fun getPerformer(performerId: Int): Performer? = performers[performerId]
 
-    override fun saveAlbum(album: Album) {
+    override fun createAlbum(album: Album):Album {
         if (albums[album.id] == null) {
             albums.put(album.id, album)
         }
+        return album
     }
 
     override fun saveCollector(collector: Collector) {
