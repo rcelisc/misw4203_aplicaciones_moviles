@@ -88,7 +88,7 @@
                 android:text="@string/genre_album_detail"
                 android:textColor="@color/black" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/album_genre_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +97,8 @@
                 android:hint="@string/genre_album_detail"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:background="@drawable/input_textview_shape" />
+                android:background="@drawable/input_textview_shape"
+                android:entries="@array/genre_options"/>
 
             <TextView
                 android:id="@+id/album_record_label"
@@ -107,7 +108,7 @@
                 android:text="@string/record_label_album_detail"
                 android:textColor="@color/black" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/album_record_label_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,7 +117,8 @@
                 android:hint="@string/record_label_album_detail"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:background="@drawable/input_textview_shape" />
+                android:background="@drawable/input_textview_shape"
+                android:entries="@array/record_options"/>
 
             <TextView
                 android:id="@+id/album_description_label"

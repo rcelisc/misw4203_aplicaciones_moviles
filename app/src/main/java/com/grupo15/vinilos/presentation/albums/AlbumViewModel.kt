@@ -13,6 +13,7 @@ import javax.inject.Inject
 import kotlinx.coroutines.CoroutineDispatcher
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 @HiltViewModel
 class AlbumViewModel @Inject constructor(
@@ -51,8 +52,8 @@ class AlbumViewModel @Inject constructor(
         recordLabel: String
     ) {
         viewModelScope.launch(dispatcherIO) {
-            val dateFormat = SimpleDateFormat("dd/mm/yyyy")
-            val date: Date = dateFormat.parse(releaseDate)
+            val dateFormat = SimpleDateFormat("dd/mm/yyyy", Locale.getDefault())
+            val date: Date = dateFormat.parse(releaseDate) as Date
             val newAlbum = Album(
                 name = name,
                 cover = cover,

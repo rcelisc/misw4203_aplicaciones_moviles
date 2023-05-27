@@ -44,10 +44,15 @@ class AlbumFragment : Fragment(), OnAlbumClickListener {
         albumsViewModel.error.observe(viewLifecycleOwner) { message ->
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         }
-        albumsViewModel.getAlbums()
+
         binding.floatingActionButton.setOnClickListener { onCreateAlbum() }
         return root
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        albumsViewModel.getAlbums()
     }
 
     override fun onDestroyView() {
