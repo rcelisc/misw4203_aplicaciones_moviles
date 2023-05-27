@@ -65,7 +65,7 @@ class AlbumDetailActivity : AppCompatActivity() {
         binding.albumRecordLabelText.text = album.recordLabel
         binding.albumDescriptionText.text = album.description
 
-        if (album.tracks.isNotEmpty()) {
+        if (!album.tracks.isNullOrEmpty()) {
             binding.albumTracksLabel.visibility = VISIBLE
             binding.albumTracksText.visibility = VISIBLE
             binding.albumTracksText.text = album.tracks.joinToString(TRACKS_SEPARATOR) { it.name }

@@ -37,7 +37,11 @@ class FakeVinilosApi : VinilosApi {
         return Response.success(getFakePerformer(1))
     }
 
+    override suspend fun createAlbum(album: Album): Response<Album> {
+        return Response.success(getFakeAlbum(1))
+    }
+
     override suspend fun setTrackToAlbum(id: Int, track: Track): Response<SetTrackResponse> {
-        TODO("Not yet implemented")
+        return Response.success(SetTrackResponse(101,"track 1", "05:00", getFakeAlbum(1)))
     }
 }
